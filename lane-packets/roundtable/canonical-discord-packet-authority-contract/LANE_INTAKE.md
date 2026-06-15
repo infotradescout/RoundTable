@@ -10,9 +10,9 @@ Worktree status: one pre-existing untracked REVIEW_RULES.old.md; left untouched
 
 ## Time Passage + Status Freshness
 
-Status timestamp: 2026-06-13
+Status timestamp: 2026-06-15T10:28:04.7141648-05:00
 Source of truth checked: local git status, RoundTable doctrine docs, lane templates, package scripts
-Last-known vs current: current as of status timestamp
+Last-known vs current: external Gemini/RoundTable governance verdict received; clean-worktree merge pushed to mainline; post-merge validation passed
 Freshness risk: re-check required before merge, send, apply, or live Discord activation
 Re-check required before: merge, approval claim, live Discord env configuration, live Discord send, or Merlin activation
 
@@ -29,12 +29,16 @@ Smallest aligned next action: define canonical packet and authority contract onl
 
 ## Gemini Status Gate
 
-geminiStatus: preflight_pending
+geminiStatus: execution_audit_passed
 geminiPreflightRequired: yes
 geminiExecutionAuditRequired: yes
-geminiPreflightResultRef: TBD
-geminiExecutionAuditResultRef: TBD
-mergeAuthorization: blocked
+geminiPreflightResultRef: external Gemini/RoundTable verdict recorded 2026-06-14
+geminiExecutionAuditResultRef: exports/gemini/roundtable/canonical-discord-packet-authority-contract/GEMINI_VERDICT.md
+mergeAuthorization: authorized
+
+Verdict note: Gemini PASS received for `canonical-discord-packet-authority-contract` on branch `roundtable/canonical-discord-contract`. This clears only this lane. It does not clear the separate KnightActionCard governance hold.
+
+Merge note: canonical-discord-packet-authority-contract is PASS -> MERGED at mainline merge SHA `ac0386c148eac66dcd55b020b9f5d713452affec` after post-merge validation passed on 2026-06-15.
 
 ## Goal
 

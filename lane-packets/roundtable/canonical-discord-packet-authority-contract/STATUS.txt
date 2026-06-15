@@ -2,18 +2,29 @@ Repo: roundtable
 Lane: canonical-discord-packet-authority-contract
 Branch: roundtable/canonical-discord-contract
 Baseline SHA: 99037f04f6f0bd86350a6fe38c69c2b7100b6f02
-Status timestamp: 2026-06-13
+Status timestamp: 2026-06-15T10:28:04.7141648-05:00
 Source of truth checked: local git status, RoundTable doctrine docs, lane templates, package scripts
-Last-known vs current: current as of status timestamp
+Last-known vs current: Gemini PASS recorded; clean-worktree merge pushed to mainline; post-merge validation passed
 Freshness risk: re-check required before merge, send, apply, or live Discord activation
 Re-check required before: merge, approval claim, live Discord env configuration, live Discord send, or Merlin activation
 Worktree status: one pre-existing untracked REVIEW_RULES.old.md; left untouched
 
 Existing-state/context check: completed
 Gemini status:
-geminiStatus: preflight_pending
+geminiStatus: execution_audit_passed
 geminiPreflightRequired: yes
 geminiExecutionAuditRequired: yes
-geminiPreflightResultRef: TBD
-geminiExecutionAuditResultRef: TBD
-mergeAuthorization: blocked
+geminiPreflightResultRef: external Gemini/RoundTable verdict recorded 2026-06-14
+geminiExecutionAuditResultRef: exports/gemini/roundtable/canonical-discord-packet-authority-contract/GEMINI_VERDICT.md
+mergeAuthorization: authorized
+
+Governance disposition:
+Verdict: PASS
+Lane cleared: yes
+Merge may be planned: completed
+Merge recorded: yes
+Mainline validation recorded: yes
+Lane status: PASS -> MERGED
+Mainline merge SHA: ac0386c148eac66dcd55b020b9f5d713452affec
+Post-merge validation: npm run check:scripts PASS; npm run check:discord-contract PASS
+Note: recorded verdict question 7 appears internally inconsistent; final verdict says PASS, execution_audit_passed, and mergeAuthorization authorized.
