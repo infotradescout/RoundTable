@@ -39,9 +39,10 @@ routing/gemini-pass-roundtable-dispatch
 Current integration state:
 
 ```text
-KnightActionCard lane recorded as Gawain PASS / clean / pushed / merge-ready from operator state.
-Gemini/RoundTable governance gate remains unresolved.
-No merge or closeout is authorized until Gemini PASS and Gawain merge instruction are recorded.
+KnightActionCard authority narrowing implementation is completed locally under Gemini pre-flight PASS WITH CONDITIONS.
+Prior blocked-as-designed posture is being remediated by narrowing the card to a non-authoritative presentation, review, and routing artifact.
+No schema, runtime, Discord, Merlin, database, or approval-infrastructure changes are authorized or recorded.
+No merge or closeout is authorized until validation, Gemini execution audit, and Gawain merge posture are recorded.
 ```
 
 Governance package:
@@ -60,7 +61,7 @@ PASS
 Required next action:
 
 ```text
-P0: Keep KnightActionCard blocked until its own Gemini verdict.
+P0: Preserve local validation evidence for the narrowed KnightActionCard authority model.
 P1: Preserve canonical Discord merge record and mainline validation evidence.
 P2: Keep new feature lanes closed until KnightActionCard governance state is resolved or explicitly held.
 P3: After active governance state is clean enough, create RoundTable QA Checklist / QA Gate doctrine.

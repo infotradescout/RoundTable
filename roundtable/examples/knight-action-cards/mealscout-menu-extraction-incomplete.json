@@ -23,7 +23,7 @@
   "requestedAction": "Confirm whether owner outreach is needed before structuring or applying the menu.",
   "allowedResponses": [
     "Ask owner for current menu confirmation",
-    "Approve extraction review only",
+    "Recommend Approval of extraction review only",
     "Reject the source as stale",
     "Escalate to all Knights"
   ],

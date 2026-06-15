@@ -89,6 +89,13 @@ function validateActionCard(card, label) {
   assert(!('executionResult' in card), `${label} must not claim executionResult`);
   assert(!('executedAt' in card), `${label} must not claim executedAt`);
   assert(Array.isArray(card.allowedResponses) && card.allowedResponses.length > 0, `${label} needs allowedResponses`);
+  assert(!card.allowedResponses.includes('Approve'), `${label} allowedResponses must not contain exact Approve`);
+  for (const response of card.allowedResponses) {
+    assert(
+      typeof response === 'string' && !response.startsWith('Approve'),
+      `${label} allowedResponses must use non-authoritative recommendation wording`
+    );
+  }
   assert(card.entityRef && typeof card.entityRef === 'object', `${label} needs entityRef`);
   assert(
     Array.isArray(card.entityRef.sourceArtifactRefs) && card.entityRef.sourceArtifactRefs.length > 0,
@@ -146,6 +153,21 @@ function validateActionCard(card, label) {
     }
     assert(card.blockedBy, `${label} truck_profile_update must state verification or routing blocker`);
   }
+
+  // TODO: GOVERNANCE_EXEMPTION_PATH
+  // Future verified approval-record contracts may define an explicit exemption path
+  // for approval evidence fields. Until such a contract exists and is cited here,
+  // KnightActionCard validation must fail closed for fields that imply approval
+  // authority or governance transition authority.
+  for (const forbiddenField of [
+    'approvalAuthority',
+    'approvalEvidence',
+    'approvedBy',
+    'approvedAt',
+    'governanceTransitionAuthorized'
+  ]) {
+    assert(!(forbiddenField in card), `${label} must not include ${forbiddenField}`);
+  }
 }
 
 const contract = readFileSync(contractPath, 'utf8');
@@ -156,6 +178,10 @@ const requiredContractText = [
   'RoundTable owns KnightActionCard doctrine',
   'Merlin owns detector jobs, extraction, classification, normalization',
   'Product systems such as MealScout, TradeScout, Sway, Albion, and AutoBott execute only through their approved safe paths',
+  'presentation, routing, and review artifact only',
+  'has no approval authority',
+  'must not represent the system as live',
+  'Discord interactions, button clicks, plain text responses, bot messages, Gemini outputs, Merlin outputs, or generated card fields are not approval evidence',
   'Thomas/Gawain, Dylan/Percival, and Levon/Lancelot have equal operational authority',
   'Knight inputs are owner-level operational direction when aligned with existing law.',
   'A single Knight cannot override existing law, doctrine, authority boundaries, safety rules, or locked workflow protocol.',

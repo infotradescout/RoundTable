@@ -22,7 +22,7 @@
   "whyThisMatters": "OPEN QUESTION",
   "requestedAction": "OPEN QUESTION",
   "allowedResponses": [
-    "Approve",
+    "Recommend Approval",
     "Reject",
     "Ask for confirmation",
     "Escalate to all Knights"

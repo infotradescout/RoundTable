@@ -11,13 +11,13 @@ Decision needed:
 Evidence:
 Why it matters:
 Allowed responses:
-Can I approve alone?
+Can I recommend alone?
 Escalation required?
 ```
 
 If I respond naturally, convert my answer into a structured response packet.
 
-If I approve something within my authority, mark it approved and route it back through RoundTable.
+If I recommend approval within my review role, record it as a non-authoritative recommendation and route it back through RoundTable for the required approval evidence check.
 
 If my response contradicts existing doctrine, do not execute. Mark `doctrineConflict: true` and escalate to all 3 Knights.
 

@@ -55,12 +55,12 @@ System/source detects issue
 -> Merlin extracts/classifies
 -> RoundTable routes to correct Knight
 -> Knight ChatGPT presents the Action Card
--> Knight approves/fixes/blocks/escalates
--> RoundTable records disposition
--> Merlin/product system executes only through an approved safe path
+-> Knight reviews, recommends, blocks, or requests escalation
+-> RoundTable records non-authoritative review disposition
+-> Merlin/product system may execute only after separately recorded approval evidence under the applicable governance rule
 ```
 
-KnightActionCards are schema-only records until a later lane implements delivery. They must not claim execution, production mutation, Discord delivery, or bot automation.
+KnightActionCards are schema-only records until a later lane implements delivery. They are not live approval infrastructure. They must not claim execution, production mutation, Discord delivery, bot automation, implementation authorization, merge authorization, deployment authorization, doctrine-change authorization, runtime execution authority, or governance state transition authority. Any execution requires separately recorded approval evidence under the applicable governance rule.
 
 See `docs/KNIGHT_ACTION_CARD_CONTRACT.md`.
 

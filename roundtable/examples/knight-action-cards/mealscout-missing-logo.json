@@ -23,7 +23,7 @@
   "requestedAction": "Decide whether to request a logo, use an approved placeholder, or block profile polish until an asset is available.",
   "allowedResponses": [
     "Request logo from owner",
-    "Approve existing candidate asset",
+    "Recommend Approval of existing candidate asset",
     "Use approved placeholder",
     "Block until asset source is supplied",
     "Escalate to all Knights"

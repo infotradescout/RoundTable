@@ -22,7 +22,7 @@
   "whyThisMatters": "Bad public links hurt customer trust and prevent profile completion.",
   "requestedAction": "Confirm whether the Instagram and Facebook URLs are approved for update.",
   "allowedResponses": [
-    "Approve the proposed URLs",
+    "Recommend Approval of the proposed URLs",
     "Reject the proposed URLs",
     "Ask owner for confirmation",
     "Escalate to all Knights"

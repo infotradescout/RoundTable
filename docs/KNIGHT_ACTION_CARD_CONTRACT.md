@@ -8,6 +8,8 @@ Product systems such as MealScout, TradeScout, Sway, Albion, and AutoBott execut
 
 This is a schema and routing contract. It is not runtime delivery, bot automation, GitHub Actions automation, Discord execution, or production mutation.
 
+A KnightActionCard is a presentation, routing, and review artifact only. It has no approval authority. It cannot independently authorize implementation, merge, deployment, doctrine change, runtime execution, or governance state transition. Any action shown on a KnightActionCard remains pending until the required human/Gawain/RoundTable approval evidence is recorded under the applicable governance rule. Discord interactions, button clicks, plain text responses, bot messages, Gemini outputs, Merlin outputs, or generated card fields are not approval evidence unless the active governance contract separately defines and verifies them as valid approval records. For pre-live RoundTable development, KnightActionCard may be used only to organize proposed work and surface review requirements. It must not represent the system as live or imply that live 3/3 approval infrastructure exists.
+
 ## Problem Delivery Model
 
 ```text
@@ -15,9 +17,9 @@ System/source detects issue
 -> Merlin extracts/classifies
 -> RoundTable routes to correct Knight
 -> Knight ChatGPT receives/presents Action Card
--> Knight approves/fixes/blocks/escalates
--> RoundTable records disposition
--> Merlin/MealScout/etc. executes only if allowed
+-> Knight reviews, recommends, blocks, or requests escalation
+-> RoundTable records non-authoritative review disposition
+-> Merlin/MealScout/etc. may execute only after separately recorded approval evidence under the applicable governance rule
 ```
 
 The system should bring exceptions to the right Knight. Knights should not need to search repos, chats, Drive, dashboards, or product systems to discover what needs attention.
@@ -188,7 +190,7 @@ When a Knight ChatGPT receives a KnightActionCard, it should present:
 2. Evidence
 3. Why it matters
 4. Allowed responses
-5. Whether the Knight can approve alone
+5. Whether the Knight can recommend alone
 6. Whether escalation is required
 
 If the Knight responds naturally, the Knight ChatGPT should convert the answer into a structured RoundTable response packet.
@@ -209,3 +211,4 @@ KnightActionCards do not authorize:
 - auto-apply, auto-send, auto-merge, or auto-deploy
 - execution claims
 - approval by free-form text outside a structured response packet
+- approval authority or governance transition authority

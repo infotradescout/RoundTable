@@ -243,6 +243,10 @@ They must be evidence-backed, target exactly one Knight/Human pair or `all_three
 
 They must not claim execution, production mutation, Discord/bot delivery, GitHub Actions automation, approval, merge, deploy, send, or apply.
 
+They must not claim approval authority or governance transition authority.
+
+They may only record non-authoritative review, recommendation, and routing state.
+
 P0/P1 KnightActionCards require evidence.
 
 If `doctrineConflict: true`, the card must route to `all_three`, set `requiresThreeKnightEscalation: true`, and remain blocked until 3/3 resolution is recorded.

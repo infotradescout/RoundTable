@@ -5,7 +5,9 @@ Source of truth checked: local git status, origin fetch, upstream ahead/behind, 
 
 ## Project-Level State
 
-RoundTable is currently in project-level integration and governance mode with mixed lane state. KnightActionCard remains governance-pending and merge-blocked. canonical-discord-packet-authority-contract is now PASS -> MERGED on mainline after clean-worktree merge, push, and post-merge validation.
+RoundTable is currently in project-level integration and governance mode with mixed lane state. KnightActionCard governance conflict is being resolved through a narrowed non-authoritative authority model. The card is a presentation, review, and routing artifact only. Local validation has passed, but merge remains unavailable until Gemini execution audit and Gawain merge posture are recorded. canonical-discord-packet-authority-contract is now PASS -> MERGED on mainline after clean-worktree merge, push, and post-merge validation.
+
+No schema, runtime, Discord, Merlin, database, or approval-infrastructure changes are authorized or recorded for the KnightActionCard narrowing.
 
 Zachary QA operating input is now a standing workflow input: do not keep stacking new features until existing product/workflow lanes are QAed, approved, merged cleanly, validated, and then cleaned up with DRY/SRP discipline.
 
@@ -35,7 +37,9 @@ Zachary QA operating input is now a standing workflow input: do not keep stackin
   - Implementation head under review: `4ac4a96d304eada3858e1db774d72a9692c2a255`
   - Upstream delta before local governance packaging: `0 0` after `git fetch origin`
   - Local status after this tracker update: governance package files added/edited locally; implementation head remains pushed
-  - Merge status: blocked pending Gemini/RoundTable governance gate
+  - Merge status: blocked pending Gemini execution audit and Gawain merge posture
+  - Local validation: `npm run check:knight-action-card` PASS; `npm run check:scripts` PASS; `git diff --check` PASS
+  - Authority model: non-authoritative presentation, review, and routing artifact only
   - Gemini handoff: `exports/gemini/roundtable/knight-action-card-governance/GEMINI_REQUEST.md`
 
 ## Governance-Cleared Lanes
@@ -44,11 +48,11 @@ Zachary QA operating input is now a standing workflow input: do not keep stackin
 
 ## Blocked Lanes
 
-- KnightActionCard: governance blocker remains unresolved until Gemini returns PASS or objections against `exports/gemini/roundtable/knight-action-card-governance/GEMINI_REQUEST.md`.
+- KnightActionCard: merge remains blocked until Gemini execution audit and Gawain merge posture are recorded.
 
 ## Next Candidate Lanes
 
-- P0: Keep KnightActionCard blocked until its own Gemini verdict.
+- P0: Preserve local validation evidence for the narrowed KnightActionCard authority model.
 - P1: Preserve canonical Discord merge record and validation evidence.
 - P2: Keep new feature lanes closed until KnightActionCard governance state is resolved or explicitly held.
 - P3: Create RoundTable QA Checklist / QA Gate doctrine after active governance state is clean enough.
