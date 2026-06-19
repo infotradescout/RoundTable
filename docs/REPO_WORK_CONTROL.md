@@ -26,6 +26,8 @@ Product code still changes inside the target repo. Round Table owns the control 
 
 When Round Table needs to dispatch a post-Gemini-PASS instruction, the dispatch record must follow `docs/ROUNDTABLE_ROUTING_DISPATCH_CONTRACT.md` and `roundtable/schemas/routing-dispatch.schema.json`.
 
+Forward execution is mandatory inside the authorized repo lane when the next step is obvious, safe, singular, and evidence-backed. Agents must continue through inspection, safe parking, staging, validation, in-scope validation fixes, validation reruns, scoped commits, and review-packet preparation. They must stop for Gemini review gates, owner / Truth Lock / 3-Knight approval, merge/deploy approval, production mutation, multiple meaningful path choices, scope crossing, repo/project switches, brand-boundary issues, missing evidence, unsafe assumptions, unfixable in-scope validation failures, dirty work that cannot be safely parked, and governance/authority uncertainty.
+
 ## Hard Rules
 
 - No repo work without a Round Table packet first.
@@ -37,6 +39,7 @@ When Round Table needs to dispatch a post-Gemini-PASS instruction, the dispatch 
 - Round Table cannot authorize merge/deploy from stale status.
 - A packet with `gemini_required: true` cannot be merge-authorized without Gemini execution audit evidence.
 - A dispatch packet must set `no_runtime_execution_by_roundtable: true`.
+- “If there is only one valid next step, continue. If there is a real choice, stop and escalate.” applies to execution flow but does not weaken approvals, QA, evidence, or brand boundaries.
 
 ## Required Work Packet Fields
 

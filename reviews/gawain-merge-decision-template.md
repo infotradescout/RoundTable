@@ -27,6 +27,13 @@ PASS / FAIL / BLOCK / MERGE / CORRECT
 <decision>
 ```
 
+## Forward Execution Check
+
+```text
+Did execution continue through the one obvious safe next step?
+Did execution stop at the correct blocker or approval boundary?
+```
+
 ## Action
 
 ```text

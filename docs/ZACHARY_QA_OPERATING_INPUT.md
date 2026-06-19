@@ -16,6 +16,8 @@ The operating order is:
 6. Re-QA after cleanup.
 7. Only then introduce new features.
 
+Forward execution supports this order by requiring agents to keep moving through the one obvious safe next step, including QA prep, validation, in-scope fixes, validation reruns, and reconciliation work. It does not authorize skipping Gemini, Zachary QA/DRY discipline, Guinevere review, merge authority, owner / Truth Lock / 3-Knight approval, or any production mutation gate.
+
 ## RoundTable Application
 
 Current RoundTable priority order:
@@ -39,4 +41,3 @@ Do not collapse separate lane statuses.
 Do not record PASS -> MERGED without actual merge plus post-merge validation.
 Do not start DRY/SRP refactors before QA and current merge reconciliation.
 ```
-

@@ -72,6 +72,15 @@ No Gemini status means no merge, no closeout, no "approved," and no "ready."
 
 Do not begin Codex execution for doctrine, governance, workflow, authority, automation, core architecture, execution logic, cross-repo routing, merge authorization, deployment, money/legal, storage/runtime, or product behavior changes until Gemini pre-flight has passed. If Gemini is unavailable, mark the lane held_pending_gemini.
 
+## Forward Execution Doctrine
+
+“If there is only one valid next step, continue. If there is a real choice, stop and escalate.”
+
+Do not stop merely because a subtask completed.
+Continue automatically only when the next step is obvious, safe, singular, inside the authorized lane, and supported by known validation/evidence.
+You may continue through existing-state inspection, safe dirty-work parking, already-authorized stash application, scoped staging, validation, fixing in-scope validation failures, rerunning validation, committing scoped work, producing review packets, and preparing the next pre-authorized lane only when explicitly allowed.
+Stop for Gemini review gates, owner / Truth Lock / 3-Knight approval, merge/deploy approval, production mutation, multiple valid path choices that matter, scope crossing, repo/project switches, brand-boundary issues, missing evidence, unsafe assumptions, unfixable in-scope validation failures, dirty work that cannot be safely parked, or governance/authority uncertainty.
+
 ## Rules
 
 - Use only the target product repo path.

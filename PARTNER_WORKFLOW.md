@@ -60,6 +60,8 @@ For every partner request, Gawain must:
 9. Require raw diff/full payload before Gemini implementation review.
 10. Authorize merge only after Gemini implementation pass.
 
+While carrying that workflow, Gawain and any supporting agent must continue automatically through obvious, safe, singular next steps inside the approved lane, including packet drafting, evidence collection, validation preparation, and review-packet assembly. They must stop when the next step is a real choice, Gemini review gate, owner / Truth Lock / 3-Knight approval, merge/deploy/production mutation, repo switch, scope crossing, brand-boundary issue, missing evidence, or authority uncertainty.
+
 ## Partner Boundaries
 
 Partners must not:

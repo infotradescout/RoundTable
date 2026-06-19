@@ -4,6 +4,14 @@ RoundTable owns routing dispatch records. Product repos and Merlin own execution
 
 This contract defines what must be true before RoundTable may dispatch an approved lane to a target executor after Gemini PASS. It is not runtime code, does not move product code into RoundTable, and does not authorize RoundTable to merge, deploy, send, apply, mutate Drive, call Discord, or mutate product state.
 
+Forward execution may accelerate packet preparation only when the next step is obvious, safe, singular, inside the already-authorized lane, and supported by evidence.
+
+Mandatory rule:
+
+“If there is only one valid next step, continue. If there is a real choice, stop and escalate.”
+
+This rule never bypasses Gemini review, owner / Truth Lock / 3-Knight approval, RoundTable 3/3, AI Council validation, merge/deploy/production mutation, repo/project switches, scope crossing, brand-boundary separation, missing evidence, or authority uncertainty.
+
 ## Ownership Boundary
 
 RoundTable owns:

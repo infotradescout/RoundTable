@@ -48,6 +48,20 @@ If status was not re-checked, the claim must be labeled as last-known status and
 
 A review packet with stale or missing status freshness defaults to FAIL for authority-sensitive work, or PASS WITH CONDITIONS only when the missing freshness can be corrected before action.
 
+## Forward Execution Review Gate
+
+Mandatory rule:
+
+“If there is only one valid next step, continue. If there is a real choice, stop and escalate.”
+
+Agents must continue automatically when the next step is obvious, safe, singular, inside the authorized lane, not a merge/deploy/production mutation, not a governance approval point, not a repo/project switch, not a scope crossing, and supported by known validation/evidence.
+
+Agents must not stop merely because a subtask completed. They may continue through existing-state inspection, dirty worktree parking, already-authorized stash application, scoped file staging, validation, fixing in-scope validation failures, rerunning validation, committing scoped work, producing review packets, and preparing the next pre-authorized lane when explicitly allowed.
+
+Agents must stop at real blockers: merge approval, deploy approval, production mutation, Gemini review gate, owner / Truth Lock / 3-Knight approval, multiple valid paths where the choice matters, scope crossing, project/repo switch, brand-boundary issues, missing evidence, failed validation that cannot be fixed in scope, unsafe assumptions, dirty worktree that cannot be safely parked, and governance or authority uncertainty.
+
+This rule does not weaken Gemini gates, Zachary QA/DRY gate, Guinevere review, RoundTable 3/3 approval, Gawain merge posture, owner/Truth Lock authority, brand separation, or evidence law.
+
 ## Non-Negotiable Arbitrator Rule
 
 Gemini is the arbitrator and adversarial objector for workflow safety.

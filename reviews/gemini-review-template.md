@@ -49,7 +49,9 @@ Gemini has no repo, file, PR, branch, commit, or connector access. Review only t
 6. Are the tests/contracts meaningful?
 7. Did Codex alter behavior when a contract-only change was enough?
 8. Does this conflict with active lanes?
-9. Should this merge now, wait, or be corrected?
+9. Did Codex continue when the next step was obvious, safe, singular, and in-lane?
+10. Did Codex stop at the correct blocker or approval boundary?
+11. Should this merge now, wait, or be corrected?
 
 ## Required Output
 
@@ -57,6 +59,7 @@ Gemini has no repo, file, PR, branch, commit, or connector access. Review only t
 - Critical blockers
 - Doctrine drift
 - Scope creep
+- Forward execution compliance
 - Test weakness
 - Merge conflicts / lane conflicts
 - Merge recommendation

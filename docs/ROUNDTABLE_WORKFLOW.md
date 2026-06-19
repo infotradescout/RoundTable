@@ -34,6 +34,58 @@ What assumptions remain?
 What is the smallest aligned next action?
 ```
 
+## Forward Execution Doctrine
+
+Mandatory rule:
+
+“If there is only one valid next step, continue. If there is a real choice, stop and escalate.”
+
+AI agents must continue automatically when the next step is:
+
+- obvious
+- safe
+- singular
+- inside the authorized lane
+- not a merge/deploy/production mutation
+- not a governance approval point
+- not a repo/project switch
+- not a scope crossing
+- supported by known validation/evidence
+
+AI agents must not stop merely because a subtask completed.
+
+AI agents may continue through:
+
+- existing-state inspection
+- dirty worktree parking
+- stash application when already authorized
+- scoped file staging
+- validation
+- fixing in-scope validation failures
+- rerunning validation
+- committing scoped work
+- producing review packets
+- preparing the next pre-authorized lane when explicitly allowed
+
+AI agents must stop at real blockers:
+
+- merge approval
+- deploy approval
+- production mutation
+- Gemini review gate
+- owner / Truth Lock / 3-Knight approval
+- multiple valid paths where the choice matters
+- scope crossing
+- project/repo switch
+- brand-boundary issue
+- missing evidence
+- failed validation that cannot be fixed in scope
+- unsafe assumption
+- dirty worktree that cannot be safely parked
+- governance or authority uncertainty
+
+This doctrine does not weaken Gemini gates, Zachary QA/DRY gate, Guinevere review, RoundTable 3/3 approval, Gawain merge posture, owner/Truth Lock authority, brand separation, or evidence law.
+
 ## Operating Loop
 
 1. Select a repo or workflow by `--repo-key` when repo work is involved.

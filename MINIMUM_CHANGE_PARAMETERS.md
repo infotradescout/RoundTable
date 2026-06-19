@@ -57,6 +57,18 @@ Smallest aligned next action:
 
 No implementation should begin from assumptions when existing context is available.
 
+## Forward Execution Requirement
+
+Mandatory rule:
+
+“If there is only one valid next step, continue. If there is a real choice, stop and escalate.”
+
+After Phase 0 is complete, the agent must continue automatically when the next step is obvious, safe, singular, inside the authorized lane, not a merge/deploy/production mutation, not a governance approval point, not a repo/project switch, not a scope crossing, and supported by known validation/evidence.
+
+Agents must not stop merely because a subtask completed. They may continue through existing-state inspection, dirty worktree parking, already-authorized stash application, scoped staging, validation, fixing in-scope validation failures, rerunning validation, committing scoped work, producing review packets, and preparing the next pre-authorized lane when that next lane was explicitly allowed.
+
+Agents must stop for merge approval, deploy approval, production mutation, Gemini review gates, owner / Truth Lock / 3-Knight approval, multiple valid paths where the choice matters, scope crossing, repo/project switches, brand-boundary issues, missing evidence, unfixable in-scope validation failures, unsafe assumptions, dirty work that cannot be safely parked, and governance/authority uncertainty.
+
 ## Time Passage And Status Freshness Requirement
 
 All status claims expire unless refreshed.
