@@ -85,6 +85,11 @@ No Gemini status means no merge, no closeout, no "approved," and no "ready." Mer
 ## Validation
 TBD
 
+## Forward Execution Review
+- Continued automatically through obvious/safe/singular in-lane steps: TBD
+- Correct stop/escalation point reached: TBD
+- Blocker or approval boundary evidence: TBD
+
 ## Review Notes
 No raw git diff is included by default. Attach targeted evidence only when Gawain authorizes it.
 `, values);
@@ -113,6 +118,12 @@ geminiExecutionAuditRequired: yes
 geminiPreflightResultRef: TBD
 geminiExecutionAuditResultRef: TBD
 mergeAuthorization: blocked
+
+## Forward Execution Gate
+
+“If there is only one valid next step, continue. If there is a real choice, stop and escalate.”
+
+Confirm whether execution continued through obvious, safe, singular in-lane steps and stopped at the correct blocker or approval boundary.
 
 ## Request
 Review the lane packet, time/status freshness, Gemini status gate, existing-state/context findings, file disposition, validation log, and worktree status. Return PASS or FAIL with specific concerns.

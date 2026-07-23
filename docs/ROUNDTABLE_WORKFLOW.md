@@ -1,6 +1,6 @@
-# Gawain-Main Workflow
+# RoundTable Workflow
 
-Gawain-Main / RoundTable is the dispatcher and ledger for Thomas/Gawain repos. It stores workflow doctrine, registry metadata, lane packets, review packets, parent routing packets, terminal Git state records, and Gemini exports.
+RoundTable is the dispatcher and ledger for Thomas/Gawain repos. It stores workflow doctrine, registry metadata, lane packets, review packets, parent routing packets, terminal Git state records, and Gemini exports.
 
 It is not a product source mirror. Product repos stay separate and are referenced through `registry/repos.json`.
 
@@ -34,6 +34,58 @@ What assumptions remain?
 What is the smallest aligned next action?
 ```
 
+## Forward Execution Doctrine
+
+Mandatory rule:
+
+“If there is only one valid next step, continue. If there is a real choice, stop and escalate.”
+
+AI agents must continue automatically when the next step is:
+
+- obvious
+- safe
+- singular
+- inside the authorized lane
+- not a merge/deploy/production mutation
+- not a governance approval point
+- not a repo/project switch
+- not a scope crossing
+- supported by known validation/evidence
+
+AI agents must not stop merely because a subtask completed.
+
+AI agents may continue through:
+
+- existing-state inspection
+- dirty worktree parking
+- stash application when already authorized
+- scoped file staging
+- validation
+- fixing in-scope validation failures
+- rerunning validation
+- committing scoped work
+- producing review packets
+- preparing the next pre-authorized lane when explicitly allowed
+
+AI agents must stop at real blockers:
+
+- merge approval
+- deploy approval
+- production mutation
+- Gemini review gate
+- owner / Truth Lock / 3-Knight approval
+- multiple valid paths where the choice matters
+- scope crossing
+- project/repo switch
+- brand-boundary issue
+- missing evidence
+- failed validation that cannot be fixed in scope
+- unsafe assumption
+- dirty worktree that cannot be safely parked
+- governance or authority uncertainty
+
+This doctrine does not weaken Gemini gates, Zachary QA/DRY gate, Guinevere review, RoundTable 3/3 approval, Gawain merge posture, owner/Truth Lock authority, brand separation, or evidence law.
+
 ## Operating Loop
 
 1. Select a repo or workflow by `--repo-key` when repo work is involved.
@@ -45,6 +97,24 @@ What is the smallest aligned next action?
 7. Create a review packet in `review-packets/`.
 8. Create a Gemini handoff in `exports/gemini/` when implementation review is required.
 9. Close only after Codex PASS, Gawain PASS, Gemini PASS when required, required human/Knight signoff when applicable, and a clean target worktree.
+
+## Problem Delivery Loop
+
+RoundTable may receive or prepare KnightActionCards for exception routing:
+
+```text
+System/source detects issue
+-> Merlin extracts/classifies
+-> RoundTable routes to correct Knight
+-> Knight ChatGPT presents the Action Card
+-> Knight reviews, recommends, blocks, or requests escalation
+-> RoundTable records non-authoritative review disposition
+-> Merlin/product system may execute only after separately recorded approval evidence under the applicable governance rule
+```
+
+KnightActionCards are schema-only records until a later lane implements delivery. They are not live approval infrastructure. They must not claim execution, production mutation, Discord delivery, bot automation, implementation authorization, merge authorization, deployment authorization, doctrine-change authorization, runtime execution authority, or governance state transition authority. Any execution requires separately recorded approval evidence under the applicable governance rule.
+
+See `docs/KNIGHT_ACTION_CARD_CONTRACT.md`.
 
 ## Gemini Status Gate
 
@@ -66,8 +136,8 @@ Merge authorization remains blocked until `geminiStatus: execution_audit_passed`
 ## Non-Negotiables
 
 - Do not act from assumption alone when current state can be inspected.
-- Do not copy product source into Gawain-Main.
-- Do not place live product repos inside Gawain-Main.
+- Do not copy product source into RoundTable.
+- Do not place live product repos inside RoundTable.
 - Scripts must resolve product paths from `registry/repos.json`.
 - No lane may close with modified, deleted, or untracked files.
 - No raw/full diffs go to Gemini by default.

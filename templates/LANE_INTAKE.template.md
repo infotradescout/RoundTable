@@ -24,6 +24,13 @@ geminiPreflightResultRef:
 geminiExecutionAuditResultRef:
 mergeAuthorization:
 
+## Forward Execution Doctrine
+
+“If there is only one valid next step, continue. If there is a real choice, stop and escalate.”
+
+Continue automatically only when the next step is obvious, safe, singular, inside the authorized lane, and supported by known validation/evidence.
+Stop for Gemini review gates, owner / Truth Lock / 3-Knight approval, merge/deploy/production mutation, multiple valid path choices that matter, scope crossing, repo/project switches, brand-boundary issues, missing evidence, unsafe assumptions, unfixable in-scope validation failures, dirty work that cannot be safely parked, or governance/authority uncertainty.
+
 ## Goal
 
 ## Allowed Files

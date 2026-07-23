@@ -1,6 +1,6 @@
 # Partner Workflow
 
-Gawain's Main may be used by Thomas and approved business partners to route work across attached repos.
+RoundTable may be used by Thomas and approved business partners to route work across attached repos.
 
 ## Core Rule
 
@@ -60,6 +60,8 @@ For every partner request, Gawain must:
 9. Require raw diff/full payload before Gemini implementation review.
 10. Authorize merge only after Gemini implementation pass.
 
+While carrying that workflow, Gawain and any supporting agent must continue automatically through obvious, safe, singular next steps inside the approved lane, including packet drafting, evidence collection, validation preparation, and review-packet assembly. They must stop when the next step is a real choice, Gemini review gate, owner / Truth Lock / 3-Knight approval, merge/deploy/production mutation, repo switch, scope crossing, brand-boundary issue, missing evidence, or authority uncertainty.
+
 ## Partner Boundaries
 
 Partners must not:
@@ -82,4 +84,4 @@ Merlin work goes to Merlin.
 AutoBott work goes to AutoBott.
 ```
 
-Gawain's Main stores the routing record only.
+RoundTable stores the routing record only.

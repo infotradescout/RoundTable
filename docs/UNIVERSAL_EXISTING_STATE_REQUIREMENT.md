@@ -45,7 +45,7 @@ Before RoundTable produces a routing recommendation, prompt, review packet, docu
 
 This requirement applies to RoundTable records for:
 
-- Gawain's Main / RoundTable
+- RoundTable
 - parent routing packets
 - terminal Git state records
 - lane intake packets
@@ -89,6 +89,16 @@ Preferred order:
 6. Make the smallest aligned change
 7. Return evidence and next action
 ```
+
+## Forward Execution Doctrine
+
+Forward execution is mandatory once the existing state has been read and the next step is obvious, safe, singular, inside the authorized lane, and supported by evidence.
+
+Mandatory rule:
+
+“If there is only one valid next step, continue. If there is a real choice, stop and escalate.”
+
+Agents must not stop merely because a subtask completed. They should continue through inspection, safe worktree parking, already-authorized stash application, scoped staging, validation, in-scope validation fixes, validation reruns, scoped commits, and review-packet production. They must stop for Gemini review gates, owner / Truth Lock / 3-Knight approval, merge/deploy/production mutation, multiple meaningful path choices, scope crossing, repo/project switches, brand-boundary issues, missing evidence, unsafe assumptions, dirty work that cannot be safely parked, or authority uncertainty.
 
 ## Evidence Rule
 

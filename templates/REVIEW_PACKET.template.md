@@ -40,5 +40,11 @@ Baseline SHA: {{BASELINE_SHA}}
 
 ## Validation Log
 
+## Forward Execution Review
+
+- Continued automatically through obvious/safe/singular in-lane steps:
+- Correct stop/escalation point reached:
+- Blocker or approval boundary evidence:
+
 ## Notes
 No raw/full diff included by default.

@@ -48,6 +48,20 @@ If status was not re-checked, the claim must be labeled as last-known status and
 
 A review packet with stale or missing status freshness defaults to FAIL for authority-sensitive work, or PASS WITH CONDITIONS only when the missing freshness can be corrected before action.
 
+## Forward Execution Review Gate
+
+Mandatory rule:
+
+“If there is only one valid next step, continue. If there is a real choice, stop and escalate.”
+
+Agents must continue automatically when the next step is obvious, safe, singular, inside the authorized lane, not a merge/deploy/production mutation, not a governance approval point, not a repo/project switch, not a scope crossing, and supported by known validation/evidence.
+
+Agents must not stop merely because a subtask completed. They may continue through existing-state inspection, dirty worktree parking, already-authorized stash application, scoped file staging, validation, fixing in-scope validation failures, rerunning validation, committing scoped work, producing review packets, and preparing the next pre-authorized lane when explicitly allowed.
+
+Agents must stop at real blockers: merge approval, deploy approval, production mutation, Gemini review gate, owner / Truth Lock / 3-Knight approval, multiple valid paths where the choice matters, scope crossing, project/repo switch, brand-boundary issues, missing evidence, failed validation that cannot be fixed in scope, unsafe assumptions, dirty worktree that cannot be safely parked, and governance or authority uncertainty.
+
+This rule does not weaken Gemini gates, Zachary QA/DRY gate, Guinevere review, RoundTable 3/3 approval, Gawain merge posture, owner/Truth Lock authority, brand separation, or evidence law.
+
 ## Non-Negotiable Arbitrator Rule
 
 Gemini is the arbitrator and adversarial objector for workflow safety.
@@ -235,8 +249,34 @@ Where Albion governance requires Knight approval, the 3/3 path remains Gawain + 
 
 RoundTable records and routes authority state. It does not alter Albion governance math in PR #2.
 
+## KnightActionCard Review Rule
+
+KnightActionCards route detected problems to the right Knight through RoundTable.
+
+They must be evidence-backed, target exactly one Knight/Human pair or `all_three`, and preserve source artifact references for MealScout profile/update cards.
+
+They must not claim execution, production mutation, Discord/bot delivery, GitHub Actions automation, approval, merge, deploy, send, or apply.
+
+They must not claim approval authority or governance transition authority.
+
+They may only record non-authoritative review, recommendation, and routing state.
+
+P0/P1 KnightActionCards require evidence.
+
+If `doctrineConflict: true`, the card must route to `all_three`, set `requiresThreeKnightEscalation: true`, and remain blocked until 3/3 resolution is recorded.
+
 ## Merge Rule
 
 Gawain gives the merge instruction only after Gemini implementation review returns Pass and any required human / Knight approval is recorded.
 
 Codex performs repo-local merge actions. Codex does not grant itself merge authority.
+
+## Repo-Work Packet Rule
+
+No repo change is valid unless a Round Table work packet exists first in `roundtable/active/` or another explicit Round Table control folder.
+
+Every repo-work packet must name the repo, target branch, baseline SHA, visible goal, user problem, acceptance criteria, files or areas to inspect, forbidden changes, validation required, production verification requirement, decision owner, Gemini requirement, status, and timestamps.
+
+No PASS may be recorded without a review packet containing files inspected, files changed, root cause, before/after behavior, validation results, production verification state, remaining risks, and final git status.
+
+No DONE may be recorded for production-facing work unless a production verification record exists and the decision record allows the production claim.

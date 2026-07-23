@@ -76,6 +76,14 @@ No Gemini status means no merge, no closeout, no "approved," and no "ready."
 
 Use geminiStatus: not_required only for explicitly standard, non-core, non-governance, non-runtime, non-product, non-deployment lanes. Use geminiStatus: held_pending_gemini when Gemini is unavailable.
 
+## Forward Execution Doctrine
+
+“If there is only one valid next step, continue. If there is a real choice, stop and escalate.”
+
+Continue automatically only when the next step is obvious, safe, singular, inside the authorized lane, and supported by known validation/evidence.
+Do not stop merely because a subtask completed.
+Stop for Gemini review gates, owner / Truth Lock / 3-Knight approval, merge/deploy/production mutation, multiple valid path choices that matter, scope crossing, repo/project switches, brand-boundary issues, missing evidence, unsafe assumptions, unfixable in-scope validation failures, dirty work that cannot be safely parked, or governance/authority uncertainty.
+
 ## Goal
 TBD
 
@@ -83,7 +91,7 @@ TBD
 TBD
 
 ## Banned Files
-Product repos must remain isolated. Do not copy source into Gawain-Main.
+Product repos must remain isolated. Do not copy source into RoundTable.
 
 ## Validation Plan
 TBD
@@ -109,6 +117,8 @@ geminiExecutionAuditRequired: yes
 geminiPreflightResultRef: TBD
 geminiExecutionAuditResultRef: TBD
 mergeAuthorization: blocked
+Forward execution:
+If there is only one valid next step, continue. If there is a real choice, stop and escalate.
 `, values);
 
 await writeTextFile(path.join(outputDir, 'LANE_INTAKE.md'), intake);

@@ -1,6 +1,6 @@
-# Gawain's Main
+# RoundTable
 
-Gawain's Main is the lightweight operating index, command layer, and RoundTable for Thomas's product repos.
+RoundTable is the lightweight operating index, command layer, and RoundTable for Thomas's product repos.
 
 It is not a product repo. It is not a source-code mirror. It is the dispatcher and ledger for repo summaries, lane maps, active work, review rules, routing queues, minimum change parameters, parent routing packets, terminal Git state records, and Gawain/Codex/Gemini packet handoffs.
 
@@ -62,9 +62,35 @@ No implementation, recommendation, review, document, workflow, plan, intake acti
 
 See `docs/UNIVERSAL_EXISTING_STATE_REQUIREMENT.md`.
 
+## Forward Execution Doctrine
+
+Mandatory rule:
+
+“If there is only one valid next step, continue. If there is a real choice, stop and escalate.”
+
+AI agents must continue automatically when the next step is:
+
+- obvious
+- safe
+- singular
+- inside the authorized lane
+- not a merge/deploy/production mutation
+- not a governance approval point
+- not a repo/project switch
+- not a scope crossing
+- supported by known validation/evidence
+
+AI agents must not stop merely because a subtask completed.
+
+AI agents may continue through existing-state inspection, dirty worktree parking, authorized stash application, scoped file staging, validation, in-scope validation fixes, validation reruns, scoped commits, review-packet production, and the next pre-authorized lane only when that follow-on lane was explicitly allowed in advance.
+
+AI agents must stop at real blockers: merge approval, deploy approval, production mutation, Gemini review gates, owner / Truth Lock / 3-Knight approval, multiple valid paths where the choice matters, scope crossing, project/repo switches, brand-boundary issues, missing evidence, failed validation that cannot be fixed in scope, unsafe assumptions, dirty work that cannot be safely parked, and governance or authority uncertainty.
+
+This doctrine does not weaken Gemini gates, Zachary QA/DRY doctrine, Guinevere review, RoundTable 3/3 approval, Gawain merge posture, owner/Truth Lock authority, brand separation, or evidence law.
+
 ## Round Table Model
 
-Gawain's Main is the real-world Round Table for Albion.
+RoundTable is the real-world Round Table for Albion.
 
 ```text
 Thomas = human counterpart to Gawain
@@ -84,6 +110,22 @@ Gemini = arbitrator / adversarial objector / implementation reviewer
 Codex = implementation inside one repo/lane after Gemini objector pass
 Thomas = final human authority
 ```
+
+## Problem Delivery System
+
+RoundTable routes detected problems as KnightActionCards so Knights do not have to search every repo, chat, Drive folder, dashboard, or product system for what needs attention.
+
+```text
+System/source detects issue
+-> Merlin extracts/classifies
+-> RoundTable routes to correct Knight
+-> Knight ChatGPT presents the Action Card
+-> Knight approves/fixes/blocks/escalates
+-> RoundTable records disposition
+-> Merlin/product system executes only through an approved safe path
+```
+
+Phase 1 is schema/contract only. See `docs/KNIGHT_ACTION_CARD_CONTRACT.md`.
 
 ## Non-Negotiable Arbitrator Rule
 
@@ -149,6 +191,26 @@ AutoBott code stays in AutoBott
 ```
 
 This repo stores summaries and operating context only.
+
+## Repo-Work Control Rule
+
+Every repo change must have a Round Table work packet before execution begins.
+
+```text
+Thomas raises issue in Round Table
+→ Round Table creates repo-scoped work packet
+→ work executes in target repo
+→ target repo returns review evidence
+→ Gemini audits when required
+→ Round Table records decision
+→ Round Table authorizes merge/deploy
+→ Round Table records production/user-visible verification
+→ Round Table closes the packet and updates the repo ledger
+```
+
+No PASS without evidence. No DONE without production/user-visible verification when production behavior is involved. No fake production claims.
+
+See `docs/REPO_WORK_CONTROL.md` and `roundtable/`.
 
 ## Gemini Review Rule
 

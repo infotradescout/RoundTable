@@ -14,6 +14,8 @@ Merlin is Intake + Search.
 - Dry run before apply.
 - Evidence-linked retrieval.
 - No fake completion state.
+- Continue automatically only when the next Merlin intake step is obvious, safe, singular, inside the authorized lane, and supported by evidence.
+- Stop for Gemini review gates, owner / Truth Lock / 3-Knight approval, apply/deploy/production mutation, repo/project switches, brand-boundary issues, missing evidence, unsafe assumptions, or any dirty work that cannot be safely parked.
 
 ## Connector Note
 
