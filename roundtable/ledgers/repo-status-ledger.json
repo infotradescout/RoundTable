@@ -1,6 +1,7 @@
 {
   "ledger_id": "roundtable-repo-status-ledger",
-  "updated_at": "2026-06-13T13:16:18.4558643-05:00",
+  "updated_at": "2026-07-25T00:00:00-05:00",
+  "notes": "Historical snapshot only; not current portfolio authority after 2026-07-25. Re-verify every branch, commit, production, and approval statement before acting. This 2026-07-25 portfolio-sync cycle was re-verified against live git state (git status/branch/log/worktree) on 2026-07-25 by the Merlin/RoundTable/Albion governance lane. See roundtable/ledgers/PORTFOLIO_SYNC_LEDGER_2026-07-25.md for full evidence, objective/acceptance/risk/next-gate detail, and named findings. Entries prior to this timestamp were stale (all marked 'discovered'/'no active packet' since 2026-06-13) and did not reflect actual repo state.",
   "repos": [
     {
       "repo": "MealScout",
@@ -8,10 +9,10 @@
       "default_branch": "main",
       "active_packet_ids": [],
       "last_closed_packet_id": "mealscout-p0-scout-discovery-2026-06-13",
-      "last_known_branch": "main",
-      "last_known_sha": "2b2f0a88",
-      "last_status": "closed: /scout P0 fixed and production-verified; visible acceptance PASS",
-      "production_verified_at": "2026-06-13T13:16:18.4558643-05:00"
+      "last_known_branch": "chore/payment-safety-week1",
+      "last_known_sha": "644a42dd",
+      "last_status": "2026-07-25 verified: chore/payment-safety-week1 active, uncommitted Stripe webhook signature-verification hardening (.env.example, MEALSCOUT_PAYMENT_WEBHOOK_SAFETY_MAP.md, server/routes/stripeWebhookRoutes.ts); not a live-payment-activation change",
+      "production_verified_at": ""
     },
     {
       "repo": "TradeScout",
@@ -19,9 +20,9 @@
       "default_branch": "main",
       "active_packet_ids": [],
       "last_closed_packet_id": "",
-      "last_known_branch": "",
-      "last_known_sha": "",
-      "last_status": "no active Round Table repo-work packet",
+      "last_known_branch": "fix/tradescout-landing-logo",
+      "last_known_sha": "26472711",
+      "last_status": "2026-07-25 verified: fix/tradescout-landing-logo active (landing logo restore), plus agent/universal-profile-express-direct-connect @ e85f1387 on worktree TradeScoutPro-direct-connect-continuity; 10 local worktrees / 150+ remote branches on this repo, high fragmentation; ISSA hero visual work pending Thomas frontend visual approval",
       "production_verified_at": ""
     },
     {
@@ -30,9 +31,9 @@
       "default_branch": "main",
       "active_packet_ids": [],
       "last_closed_packet_id": "",
-      "last_known_branch": "",
-      "last_known_sha": "",
-      "last_status": "no active Round Table repo-work packet",
+      "last_known_branch": "feat/dsp-delivery-job-engine",
+      "last_known_sha": "dfd300c",
+      "last_status": "2026-07-25 verified: DSP delivery job engine work active, uncommitted SWAY_REVENUE_MODEL.md edit adding a 'Future Revenue Lanes (Locked, Not Live)' section (event tickets) explicitly marked not-live; no active pricing/commission change",
       "production_verified_at": ""
     },
     {
@@ -41,9 +42,9 @@
       "default_branch": "main",
       "active_packet_ids": [],
       "last_closed_packet_id": "",
-      "last_known_branch": "",
-      "last_known_sha": "",
-      "last_status": "no active Round Table repo-work packet",
+      "last_known_branch": "main",
+      "last_known_sha": "71e3afd",
+      "last_status": "2026-07-25 verified: main clean, up to date with origin/main; worktree albion-evidence-rails-docs on clean/evidence-backed-action-rails-docs @ 7cbc3dc is 16 commits behind origin/main with untracked docs/strategy/",
       "production_verified_at": ""
     },
     {
@@ -52,9 +53,9 @@
       "default_branch": "main",
       "active_packet_ids": [],
       "last_closed_packet_id": "",
-      "last_known_branch": "",
-      "last_known_sha": "",
-      "last_status": "no active Round Table repo-work packet",
+      "last_known_branch": "feature/mealscout-account-intake-batch-adapter",
+      "last_known_sha": "5b799eb",
+      "last_status": "2026-07-25 verified: main worktree carries substantial uncommitted work (GitHub OAuth client/routes, server.ts, dashboard UI) not previously recorded in this ledger; merlin-os-action-layer-clean worktree is clean on main @ a1ac8ab",
       "production_verified_at": ""
     },
     {
@@ -63,9 +64,53 @@
       "default_branch": "main",
       "active_packet_ids": [],
       "last_closed_packet_id": "",
-      "last_known_branch": "",
-      "last_known_sha": "",
-      "last_status": "no active Round Table repo-work packet",
+      "last_known_branch": "feat/mirror-fill-slippage-gate",
+      "last_known_sha": "aa35410",
+      "last_status": "2026-07-25 verified: mirror-fill slippage-gate files staged uncommitted; worktree AlpacaTradingbot-restore-dashboard-auth on security/restore-dashboard-auth @ f7902b6 has uncommitted dashboard/auth changes; live trading capital risk area, requires Thomas sign-off before any live (non-paper) execution or auth-gating change merges/deploys",
+      "production_verified_at": ""
+    },
+    {
+      "repo": "RoundTable",
+      "local_path": "D:\\AAATraderCorner\\TradeScout\\RoundTable",
+      "default_branch": "main",
+      "active_packet_ids": [],
+      "last_closed_packet_id": "canonical-discord-packet-authority-contract",
+      "last_known_branch": "routing/gemini-pass-roundtable-dispatch",
+      "last_known_sha": "646e75c",
+      "last_status": "2026-07-25 verified: this governance lane's own repo; uncommitted asset_review changes preserved (not authored by this pass); added this cycle's portfolio-sync ledger/action-cards",
+      "production_verified_at": ""
+    },
+    {
+      "repo": "Platynum-47",
+      "local_path": "D:\\AAATraderCorner\\TradeScout\\Platynum-47",
+      "default_branch": "feat/mvp-editor",
+      "active_packet_ids": [],
+      "last_closed_packet_id": "",
+      "last_known_branch": "feat/concept-rescue-runtime",
+      "last_known_sha": "c114641",
+      "last_status": "2026-07-25 verified: repo has no main branch (default feat/mvp-editor); feat/t1-github-connector (141ef21) and feat/t1-oauth-broker (6d1dd00) contain real unmerged T1 work not reflected in Selective-Intelligence/ROADMAP.md, which still says 'T1-T4 pending' -- named finding, see PORTFOLIO_SYNC_LEDGER_2026-07-25.md",
+      "production_verified_at": ""
+    },
+    {
+      "repo": "Selective-Intelligence",
+      "local_path": "D:\\AAATraderCorner\\TradeScout\\Selective-Intelligence",
+      "default_branch": "main",
+      "active_packet_ids": [],
+      "last_closed_packet_id": "",
+      "last_known_branch": "feat/concept-rescue-vertical",
+      "last_known_sha": "f3bd55e",
+      "last_status": "2026-07-25 verified: remote is Platynum-47/Selective-Intelligence.git (different GitHub org than the infotradescout portfolio); holds the ROADMAP.md that governs Platynum-47's tiers even though it is a separate repo/org from platynum-47 itself; uncommitted evals.json + untracked test artifacts",
+      "production_verified_at": ""
+    },
+    {
+      "repo": "CodeScout",
+      "local_path": "D:\\AAATraderCorner\\TradeScout\\CodeScout",
+      "default_branch": "main",
+      "active_packet_ids": [],
+      "last_closed_packet_id": "",
+      "last_known_branch": "contracts/drawing-requirement-checklist",
+      "last_known_sha": "abf9aa5",
+      "last_status": "2026-07-25 verified: clean working tree, matches origin; cleanest lane in the portfolio this cycle",
       "production_verified_at": ""
     }
   ]

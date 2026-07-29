@@ -1,0 +1,51 @@
+{
+  "packetId": "roundtable.knight-action-card.portfolio-sync-2026-07-25.sway-lane",
+  "packetType": "knight_action_card",
+  "createdAt": "2026-07-25T00:00:00.000Z",
+  "sourceSystem": "Sway",
+  "sourceAgent": "RoundTable",
+  "targetSystem": "Sway",
+  "targetKnight": "Gawain",
+  "targetHuman": "Thomas",
+  "priority": "P2",
+  "problemType": "lane_state_reconciliation",
+  "entityRef": {
+    "entityType": "repo_lane",
+    "id": "sway-2026-07-25",
+    "name": "sway.tips (infotradescout/sway.tips) — DSP delivery job engine",
+    "profileRef": "OPEN QUESTION",
+    "sourceArtifactRefs": [
+      "D:\\AAATraderCorner\\TradeScout\\sway\\sway.tips\\docs\\SWAY_REVENUE_MODEL.md"
+    ]
+  },
+  "summary": "feat/dsp-delivery-job-engine active with test-hardened distribution-delivery commits. Uncommitted doc edit adds a 'Future Revenue Lanes (Locked, Not Live)' section to SWAY_REVENUE_MODEL.md for event ticket sales; the diff was read in full and explicitly states 'do not claim ticket sales until activated.'",
+  "whyThisMatters": "Revenue-model doc edits are the kind of change that could look like a pricing/commission change at a glance; verifying the actual diff content prevents a false escalation and a missed one.",
+  "requestedAction": "No Thomas action needed today. Re-surface to Thomas only if/when the event-ticket-sales lane is actually activated (a commercial pricing/commission decision at that point).",
+  "allowedResponses": [
+    "Recommend Approval",
+    "Reject",
+    "Ask for confirmation",
+    "Escalate to all Knights"
+  ],
+  "evidence": [
+    {
+      "type": "source_artifact",
+      "field": "docs/SWAY_REVENUE_MODEL.md (uncommitted diff)",
+      "value": "adds 'Future Revenue Lanes (Locked, Not Live)' section; explicit text: 'Do not claim ticket sales until activated and proven.'",
+      "sourceArtifactRef": "sway.tips:feat/dsp-delivery-job-engine (uncommitted)",
+      "notes": "git diff read directly on 2026-07-25."
+    }
+  ],
+  "blockedBy": "None; informational verification only.",
+  "productionApplied": false,
+  "requiresThreeKnightEscalation": false,
+  "doctrineConflict": false,
+  "routingReason": "Repo/validation state review routes to Gawain/Thomas per docs/KNIGHT_ACTION_CARD_CONTRACT.md.",
+  "noExecutionClaim": true,
+  "relatedPackets": [],
+  "doctrineRefs": [
+    "docs/KNIGHT_ACTION_CARD_CONTRACT.md",
+    "ROUND_TABLE.md",
+    "roundtable/ledgers/PORTFOLIO_SYNC_LEDGER_2026-07-25.md"
+  ]
+}

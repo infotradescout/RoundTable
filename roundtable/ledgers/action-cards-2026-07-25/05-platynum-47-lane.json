@@ -1,0 +1,60 @@
+{
+  "packetId": "roundtable.knight-action-card.portfolio-sync-2026-07-25.platynum-47-lane",
+  "packetType": "knight_action_card",
+  "createdAt": "2026-07-25T00:00:00.000Z",
+  "sourceSystem": "Platynum-47",
+  "sourceAgent": "RoundTable",
+  "targetSystem": "Platynum-47",
+  "targetKnight": "Gawain",
+  "targetHuman": "Thomas",
+  "priority": "P1",
+  "problemType": "lane_state_reconciliation",
+  "entityRef": {
+    "entityType": "repo_lane",
+    "id": "platynum-47-2026-07-25",
+    "name": "Platynum-47 (infotradescout/platynum-47) — stale ROADMAP vs. real unmerged T1 work",
+    "profileRef": "OPEN QUESTION",
+    "sourceArtifactRefs": [
+      "D:\\AAATraderCorner\\TradeScout\\Selective-Intelligence\\ROADMAP.md",
+      "Platynum-47:feat/t1-github-connector@141ef21",
+      "Platynum-47:feat/t1-oauth-broker@6d1dd00"
+    ]
+  },
+  "summary": "Selective-Intelligence/ROADMAP.md states (2026-07-22) 'T0 shipped ... T1-T4 pending.' Verified 2026-07-25: branches feat/t1-github-connector (141ef21, GitHub connector) and feat/t1-oauth-broker (6d1dd00, one-click OAuth broker) contain real T1 implementation, dated 2026-07-22, and are NOT merged into the repo's default branch feat/mvp-editor (verified via git branch --contains). This repo also has no main branch.",
+  "whyThisMatters": "The roadmap gives zero visibility that GitHub-connector and OAuth-broker T1 work already exists. Anyone reading only the roadmap would conclude T1 has not started; it has, just unmerged. This is a claimed-vs-actual gap, not a fabrication, but it is exactly the class of drift this governance lane exists to catch.",
+  "requestedAction": "Decide whether to merge feat/t1-github-connector and feat/t1-oauth-broker into feat/mvp-editor now or explicitly hold them, then update the ROADMAP.md status line to reflect the real state either way.",
+  "allowedResponses": [
+    "Recommend Approval",
+    "Reject",
+    "Ask for confirmation",
+    "Escalate to all Knights"
+  ],
+  "evidence": [
+    {
+      "type": "source_artifact",
+      "field": "ROADMAP.md status line",
+      "value": "Status (2026-07-22): T0 shipped ... T1-T4 pending.",
+      "sourceArtifactRef": "Selective-Intelligence/ROADMAP.md:119-121",
+      "notes": "Read directly on 2026-07-25."
+    },
+    {
+      "type": "extraction_result",
+      "field": "branch --contains check",
+      "value": "origin/feat/mvp-editor does not contain 141ef21 or 6d1dd00",
+      "sourceArtifactRef": "Platynum-47 (git branch --contains 141ef21 / 6d1dd00, git merge-base checks)",
+      "notes": "Run directly on 2026-07-25 against the local clone of infotradescout/platynum-47."
+    }
+  ],
+  "blockedBy": "No recorded decision yet on merging the T1 branches or correcting the roadmap.",
+  "productionApplied": false,
+  "requiresThreeKnightEscalation": false,
+  "doctrineConflict": false,
+  "routingReason": "Packet Truth Reconciliation conflicts (claimed vs. actual state) route to Gawain/Thomas per docs/KNIGHT_ACTION_CARD_CONTRACT.md.",
+  "noExecutionClaim": true,
+  "relatedPackets": [],
+  "doctrineRefs": [
+    "docs/KNIGHT_ACTION_CARD_CONTRACT.md",
+    "ROUND_TABLE.md",
+    "roundtable/ledgers/PORTFOLIO_SYNC_LEDGER_2026-07-25.md"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "packetId": "roundtable.knight-action-card.portfolio-sync-2026-07-25.autobott-lane",
+  "packetType": "knight_action_card",
+  "createdAt": "2026-07-25T00:00:00.000Z",
+  "sourceSystem": "AutoBott",
+  "sourceAgent": "RoundTable",
+  "targetSystem": "AutoBott",
+  "targetKnight": "Gawain",
+  "targetHuman": "Thomas",
+  "priority": "P1",
+  "problemType": "technical_apply_pending",
+  "entityRef": {
+    "entityType": "repo_lane",
+    "id": "autobott-2026-07-25",
+    "name": "AlpacaTradingbot / AutoBott (infotradescout/AutoBott) — mirror-fill slippage gate + dashboard auth restore",
+    "profileRef": "OPEN QUESTION",
+    "sourceArtifactRefs": [
+      "D:\\AAATraderCorner\\TradeScout\\AlpacaTradingbot (git status: staged mirror-fill files)",
+      "D:\\AAATraderCorner\\TradeScout\\AlpacaTradingbot-restore-dashboard-auth (git status: uncommitted auth changes)"
+    ]
+  },
+  "summary": "feat/mirror-fill-slippage-gate has staged (uncommitted) new schema/engine/test files for a VIX/mirror-fill slippage gate. security/restore-dashboard-auth (f7902b6, up to date with origin/main) has further uncommitted changes to dashboard_app.py and start_paper_dashboard.cmd restoring dashboard authentication.",
+  "whyThisMatters": "This is a live trading-bot repository. Any change touching execution logic or dashboard auth gating sits directly in the live-trading-capital risk zone on the portfolio approval-gate list, independent of how routine the code diff itself looks.",
+  "requestedAction": "Commit and test the mirror-fill slippage gate; confirm dashboard-auth restoration is fully applied (not merely staged); obtain Thomas's explicit sign-off before any of this merges/deploys in a way that affects live (non-paper) trading capital exposure or removes/restores auth gating on the trading dashboard.",
+  "allowedResponses": [
+    "Recommend Approval",
+    "Reject",
+    "Ask for confirmation",
+    "Escalate to all Knights"
+  ],
+  "evidence": [
+    {
+      "type": "source_artifact",
+      "field": "git status (staged)",
+      "value": "new file: docs/autobott_v2/MIRROR_FILL_RECORD.md, schemas/mirror_fill.schema.json, src/autobott_v2/mirror_fill.py, tests/test_mirror_fill.py",
+      "sourceArtifactRef": "AlpacaTradingbot:feat/mirror-fill-slippage-gate (staged, uncommitted)",
+      "notes": "git status read directly on 2026-07-25."
+    },
+    {
+      "type": "source_artifact",
+      "field": "git status (unstaged)",
+      "value": "modified: src/autobott_v2/dashboard_app.py, start_paper_dashboard.cmd",
+      "sourceArtifactRef": "AlpacaTradingbot-restore-dashboard-auth:security/restore-dashboard-auth (uncommitted)",
+      "notes": "git status read directly on 2026-07-25; branch itself up to date with origin/main at commit f7902b6."
+    }
+  ],
+  "blockedBy": "No recorded Thomas sign-off for the live-trading-capital risk items in this lane; both change sets remain uncommitted.",
+  "productionApplied": false,
+  "requiresThreeKnightEscalation": false,
+  "doctrineConflict": false,
+  "routingReason": "Production apply safety and live trading-capital exposure route to Gawain/Thomas per docs/KNIGHT_ACTION_CARD_CONTRACT.md; live trading capital is also an explicit Thomas approval-gate item under the portfolio synchronized-model doctrine.",
+  "noExecutionClaim": true,
+  "relatedPackets": [],
+  "doctrineRefs": [
+    "docs/KNIGHT_ACTION_CARD_CONTRACT.md",
+    "ROUND_TABLE.md",
+    "roundtable/ledgers/PORTFOLIO_SYNC_LEDGER_2026-07-25.md"
+  ]
+}

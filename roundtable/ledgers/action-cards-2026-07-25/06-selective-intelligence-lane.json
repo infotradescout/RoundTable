@@ -1,0 +1,53 @@
+{
+  "packetId": "roundtable.knight-action-card.portfolio-sync-2026-07-25.selective-intelligence-lane",
+  "packetType": "knight_action_card",
+  "createdAt": "2026-07-25T00:00:00.000Z",
+  "sourceSystem": "Selective-Intelligence",
+  "sourceAgent": "RoundTable",
+  "targetSystem": "Selective-Intelligence",
+  "targetKnight": "Gawain",
+  "targetHuman": "Thomas",
+  "priority": "P2",
+  "problemType": "lane_state_reconciliation",
+  "entityRef": {
+    "entityType": "repo_lane",
+    "id": "selective-intelligence-2026-07-25",
+    "name": "Selective-Intelligence (Platynum-47/Selective-Intelligence) — Concept Rescue vertical",
+    "profileRef": "OPEN QUESTION",
+    "sourceArtifactRefs": [
+      "D:\\AAATraderCorner\\TradeScout\\Selective-Intelligence (git remote -v)"
+    ]
+  },
+  "summary": "This repo's remote is Platynum-47/Selective-Intelligence.git, a different GitHub org than the rest of the infotradescout portfolio, and it is the actual home of ROADMAP.md that governs Platynum-47's tiers (see the linked Platynum-47 lane card for the roadmap-staleness finding). feat/concept-rescue-vertical has uncommitted evals.json changes and untracked test artifacts.",
+  "whyThisMatters": "Splitting a product's source-of-truth roadmap into a repo under a different GitHub org than the product repo it describes is an ownership/discoverability risk worth a deliberate decision rather than an accident of history.",
+  "requestedAction": "Commit or discard the pending evals.json/test-artifact changes; decide whether ROADMAP.md should be relocated into the infotradescout/platynum-47 repo or intentionally kept here.",
+  "allowedResponses": [
+    "Recommend Approval",
+    "Reject",
+    "Ask for confirmation",
+    "Escalate to all Knights"
+  ],
+  "evidence": [
+    {
+      "type": "source_artifact",
+      "field": "git remote -v",
+      "value": "origin https://github.com/Platynum-47/Selective-Intelligence.git",
+      "sourceArtifactRef": "Selective-Intelligence (git remote -v)",
+      "notes": "Run directly on 2026-07-25; org differs from infotradescout used by every other portfolio repo."
+    }
+  ],
+  "blockedBy": "No recorded decision on repo/roadmap placement.",
+  "productionApplied": false,
+  "requiresThreeKnightEscalation": false,
+  "doctrineConflict": false,
+  "routingReason": "Repo/ownership-boundary review routes to Gawain/Thomas per docs/KNIGHT_ACTION_CARD_CONTRACT.md.",
+  "noExecutionClaim": true,
+  "relatedPackets": [
+    "roundtable.knight-action-card.portfolio-sync-2026-07-25.platynum-47-lane"
+  ],
+  "doctrineRefs": [
+    "docs/KNIGHT_ACTION_CARD_CONTRACT.md",
+    "ROUND_TABLE.md",
+    "roundtable/ledgers/PORTFOLIO_SYNC_LEDGER_2026-07-25.md"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "packetId": "roundtable.knight-action-card.portfolio-sync-2026-07-25.tradescoutpro-lane",
+  "packetType": "knight_action_card",
+  "createdAt": "2026-07-25T00:00:00.000Z",
+  "sourceSystem": "TradeScout",
+  "sourceAgent": "RoundTable",
+  "targetSystem": "TradeScout",
+  "targetKnight": "Gawain",
+  "targetHuman": "Thomas",
+  "priority": "P1",
+  "problemType": "asset_decision_needed",
+  "entityRef": {
+    "entityType": "repo_lane",
+    "id": "tradescoutpro-2026-07-25",
+    "name": "TradeScoutPro (infotradescout/tradescoutAI) — ISSA hero/landing visual restoration",
+    "profileRef": "OPEN QUESTION",
+    "sourceArtifactRefs": [
+      "D:\\AAATraderCorner\\TradeScout\\TradeScoutPro (git log fix/tradescout-landing-logo)",
+      "D:\\AAATraderCorner\\TradeScout\\TradeScoutPro-direct-connect-continuity (git log agent/universal-profile-express-direct-connect)"
+    ]
+  },
+  "summary": "Landing logo restore and ISSA hero/Lux visual work is committed on fix/tradescout-landing-logo (26472711); Express Direct Connect onboarding continuity is committed and clean on agent/universal-profile-express-direct-connect (e85f1387). Neither has a recorded frontend visual approval pass.",
+  "whyThisMatters": "This repo has 10 local worktrees and 150+ remote branches — very high fragmentation with no single current-state doc. Visual/hero work in particular needs to be checked on an actual browser and phone before being treated as final, per the portfolio approval-gate list.",
+  "requestedAction": "Get frontend visual approval on an actual browser and phone for the ISSA hero/landing-logo work before treating fix/tradescout-landing-logo as final; separately, consider consolidating open worktrees per the repo's own standing 'do not stack new lanes' QA rule.",
+  "allowedResponses": [
+    "Recommend Approval",
+    "Reject",
+    "Ask for confirmation",
+    "Escalate to all Knights"
+  ],
+  "evidence": [
+    {
+      "type": "source_artifact",
+      "field": "commit",
+      "value": "26472711 Restore TradeScout landing logo and strip AI filler.",
+      "sourceArtifactRef": "TradeScoutPro:fix/tradescout-landing-logo@26472711",
+      "notes": "git log --oneline, run 2026-07-25."
+    },
+    {
+      "type": "source_artifact",
+      "field": "commit",
+      "value": "e85f1387 Update Express contracts for action-first onboarding",
+      "sourceArtifactRef": "TradeScoutPro-direct-connect-continuity:agent/universal-profile-express-direct-connect@e85f1387",
+      "notes": "git log --oneline, run 2026-07-25; branch clean and up to date with origin."
+    }
+  ],
+  "blockedBy": "No recorded frontend visual approval evidence for the ISSA hero/landing-logo visual work.",
+  "productionApplied": false,
+  "requiresThreeKnightEscalation": false,
+  "doctrineConflict": false,
+  "routingReason": "Repo/validation state review routes to Gawain/Thomas; final frontend visual sign-off on an actual device is a reserved Thomas approval-gate item per the portfolio synchronized-model doctrine.",
+  "noExecutionClaim": true,
+  "relatedPackets": [],
+  "doctrineRefs": [
+    "docs/KNIGHT_ACTION_CARD_CONTRACT.md",
+    "ROUND_TABLE.md",
+    "roundtable/ledgers/PORTFOLIO_SYNC_LEDGER_2026-07-25.md"
+  ]
+}
