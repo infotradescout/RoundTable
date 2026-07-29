@@ -1,0 +1,52 @@
+{
+  "packetId": "roundtable.knight-action-card.portfolio-sync-2026-07-25.mealscout-lane",
+  "packetType": "knight_action_card",
+  "createdAt": "2026-07-25T00:00:00.000Z",
+  "sourceSystem": "MealScout",
+  "sourceAgent": "RoundTable",
+  "targetSystem": "MealScout",
+  "targetKnight": "Gawain",
+  "targetHuman": "Thomas",
+  "priority": "P2",
+  "problemType": "technical_apply_pending",
+  "entityRef": {
+    "entityType": "repo_lane",
+    "id": "mealscout-2026-07-25",
+    "name": "MealScout (infotradescout/MealScout) — Stripe webhook signature-verification hardening",
+    "profileRef": "OPEN QUESTION",
+    "sourceArtifactRefs": [
+      "D:\\AAATraderCorner\\TradeScout\\MealScout\\server\\routes\\stripeWebhookRoutes.ts",
+      "D:\\AAATraderCorner\\TradeScout\\MealScout\\MEALSCOUT_PAYMENT_WEBHOOK_SAFETY_MAP.md"
+    ]
+  },
+  "summary": "chore/payment-safety-week1 has uncommitted changes making unsigned-webhook-accept in dev an explicit opt-in (STRIPE_WEBHOOK_DEV_ALLOW_UNSIGNED) instead of the prior default. Diff was read directly: defensive hardening, not a live payment-flow activation.",
+  "whyThisMatters": "Touches live Stripe webhook verification code; needs to be committed and reconciled with the safety-map doc before the slice is considered closed.",
+  "requestedAction": "Commit the pending diff and confirm MEALSCOUT_PAYMENT_WEBHOOK_SAFETY_MAP.md matches the shipped verification-mode logic.",
+  "allowedResponses": [
+    "Recommend Approval",
+    "Reject",
+    "Ask for confirmation",
+    "Escalate to all Knights"
+  ],
+  "evidence": [
+    {
+      "type": "source_artifact",
+      "field": "server/routes/stripeWebhookRoutes.ts (uncommitted diff)",
+      "value": "adds decideStripeWebhookVerificationMode() gated by STRIPE_WEBHOOK_DEV_ALLOW_UNSIGNED, replacing an unconditional NODE_ENV==='development' bypass",
+      "sourceArtifactRef": "MealScout:chore/payment-safety-week1 (uncommitted)",
+      "notes": "git diff read directly on 2026-07-25; confirmed no live-payment-activation behavior change, opt-in hardening only."
+    }
+  ],
+  "blockedBy": "Diff is uncommitted; no commit SHA exists yet to cite as closed proof.",
+  "productionApplied": false,
+  "requiresThreeKnightEscalation": false,
+  "doctrineConflict": false,
+  "routingReason": "Technical apply safety on payment-adjacent code routes to Gawain/Thomas per docs/KNIGHT_ACTION_CARD_CONTRACT.md.",
+  "noExecutionClaim": true,
+  "relatedPackets": [],
+  "doctrineRefs": [
+    "docs/KNIGHT_ACTION_CARD_CONTRACT.md",
+    "ROUND_TABLE.md",
+    "roundtable/ledgers/PORTFOLIO_SYNC_LEDGER_2026-07-25.md"
+  ]
+}

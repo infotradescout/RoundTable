@@ -1,0 +1,51 @@
+{
+  "packetId": "roundtable.knight-action-card.portfolio-sync-2026-07-25.codescout-lane",
+  "packetType": "knight_action_card",
+  "createdAt": "2026-07-25T00:00:00.000Z",
+  "sourceSystem": "CodeScout",
+  "sourceAgent": "RoundTable",
+  "targetSystem": "CodeScout",
+  "targetKnight": "Gawain",
+  "targetHuman": "Thomas",
+  "priority": "P3",
+  "problemType": "lane_state_reconciliation",
+  "entityRef": {
+    "entityType": "repo_lane",
+    "id": "codescout-2026-07-25",
+    "name": "CodeScout (infotradescout/CodeScout) — municipal permit/compliance data contracts",
+    "profileRef": "OPEN QUESTION",
+    "sourceArtifactRefs": [
+      "D:\\AAATraderCorner\\TradeScout\\CodeScout (git log contracts/drawing-requirement-checklist)"
+    ]
+  },
+  "summary": "contracts/drawing-requirement-checklist is clean and matches origin at abf9aa5. Single worktree, no uncommitted state. Cleanest lane in the portfolio this cycle.",
+  "whyThisMatters": "No elevated risk identified; recorded for completeness of the required one-entry-per-lane ledger.",
+  "requestedAction": "No action requested. Continue the contract-slice sequence or open a PR for contracts/drawing-requirement-checklist at the owner's discretion.",
+  "allowedResponses": [
+    "Recommend Approval",
+    "Reject",
+    "Ask for confirmation",
+    "Escalate to all Knights"
+  ],
+  "evidence": [
+    {
+      "type": "source_artifact",
+      "field": "commit",
+      "value": "abf9aa5 Update Selective Intelligence skill: branch-per-slice/chat-branch pairing",
+      "sourceArtifactRef": "CodeScout:contracts/drawing-requirement-checklist@abf9aa5",
+      "notes": "git log --oneline / git status, run 2026-07-25; working tree clean, matches origin."
+    }
+  ],
+  "blockedBy": "None.",
+  "productionApplied": false,
+  "requiresThreeKnightEscalation": false,
+  "doctrineConflict": false,
+  "routingReason": "Routine repo-state confirmation routes to Gawain/Thomas per docs/KNIGHT_ACTION_CARD_CONTRACT.md.",
+  "noExecutionClaim": true,
+  "relatedPackets": [],
+  "doctrineRefs": [
+    "docs/KNIGHT_ACTION_CARD_CONTRACT.md",
+    "ROUND_TABLE.md",
+    "roundtable/ledgers/PORTFOLIO_SYNC_LEDGER_2026-07-25.md"
+  ]
+}

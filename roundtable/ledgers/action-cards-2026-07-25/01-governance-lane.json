@@ -1,0 +1,59 @@
+{
+  "packetId": "roundtable.knight-action-card.portfolio-sync-2026-07-25.governance-lane",
+  "packetType": "knight_action_card",
+  "createdAt": "2026-07-25T00:00:00.000Z",
+  "sourceSystem": "RoundTable",
+  "sourceAgent": "RoundTable",
+  "targetSystem": "RoundTable",
+  "targetKnight": "Gawain",
+  "targetHuman": "Thomas",
+  "priority": "P1",
+  "problemType": "lane_state_reconciliation",
+  "entityRef": {
+    "entityType": "portfolio_ledger",
+    "id": "portfolio-sync-2026-07-25",
+    "name": "Merlin / RoundTable / Albion governance lane — first synchronized-model cycle",
+    "profileRef": "OPEN QUESTION",
+    "sourceArtifactRefs": [
+      "roundtable/ledgers/PORTFOLIO_SYNC_LEDGER_2026-07-25.md",
+      "roundtable/ledgers/repo-status-ledger.json"
+    ]
+  },
+  "summary": "First-cycle portfolio reconciliation ledger built entirely from directly-verified git evidence across all 8 resolvable portfolio lanes (7 product repos + this governance lane).",
+  "whyThisMatters": "Prior to this cycle, roundtable/registry/repos.json and status/*.md had not been touched since 2026-06-13/06-19 and every repo was still marked 'discovered' with blank state. Any status pulled from those files was stale. This ledger replaces that gap with a re-runnable, evidence-only snapshot and records two named findings (lane-count mismatch vs. the doctrine prompt; stale Platynum-47 ROADMAP.md) rather than silently absorbing them.",
+  "requestedAction": "Review the first-cycle ledger and the two named findings; confirm this ledger becomes the pull-source other lanes' agents use instead of reconstructing status from conversation.",
+  "allowedResponses": [
+    "Recommend Approval",
+    "Reject",
+    "Ask for confirmation",
+    "Escalate to all Knights"
+  ],
+  "evidence": [
+    {
+      "type": "source_artifact",
+      "field": "registry/repos.json + status/*.md staleness",
+      "value": "all repos marked 'discovered', blank state since 2026-06-13/06-19",
+      "sourceArtifactRef": "registry/repos.json",
+      "notes": "Directly read; confirms prior status tracking was not being maintained."
+    },
+    {
+      "type": "source_artifact",
+      "field": "Merlin main worktree uncommitted work",
+      "value": "GitHub OAuth client/routes, server.ts, dashboard UI changes uncommitted and previously unrecorded",
+      "sourceArtifactRef": "D:\\AAATraderCorner\\TradeScout\\merlin-os-action-layer (git status)",
+      "notes": "git status run directly against the repo on 2026-07-25."
+    }
+  ],
+  "blockedBy": "Thomas review/adoption of this ledger as the canonical status pull-source has not yet been recorded.",
+  "productionApplied": false,
+  "requiresThreeKnightEscalation": false,
+  "doctrineConflict": false,
+  "routingReason": "Repo/validation state reconciliation and Packet Truth Reconciliation conflicts route to Gawain/Thomas per docs/KNIGHT_ACTION_CARD_CONTRACT.md routing doctrine.",
+  "noExecutionClaim": true,
+  "relatedPackets": [],
+  "doctrineRefs": [
+    "docs/KNIGHT_ACTION_CARD_CONTRACT.md",
+    "ROUND_TABLE.md",
+    "roundtable/ledgers/PORTFOLIO_SYNC_LEDGER_2026-07-25.md"
+  ]
+}

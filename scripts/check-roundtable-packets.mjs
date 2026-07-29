@@ -137,7 +137,11 @@ const allowedRepos = new Set([
   'Sway',
   'Albion',
   'Merlin',
-  'AutoBott'
+  'AutoBott',
+  'RoundTable',
+  'Platynum-47',
+  'Selective-Intelligence',
+  'CodeScout'
 ]);
 
 const legacyBaselineExceptions = new Set([
