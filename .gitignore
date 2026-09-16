@@ -9,3 +9,6 @@ Thumbs.db
 .env.*
 *.pem
 *.key
+
+# Private connector inventory and workstation-local execution data
+.local/

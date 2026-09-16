@@ -1,21 +1,27 @@
-import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync, realpathSync } from 'node:fs';
 import { mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
+import { buildPortfolioRegistry, githubIdentity, validateRegistry } from './portfolio-registry.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 export const ROOT = path.resolve(__dirname, '..');
 export const REGISTRY_PATH = path.join(ROOT, 'registry', 'repos.json');
 
-export function loadRegistry() {
-  const raw = readFileSync(REGISTRY_PATH, 'utf8');
-  const registry = JSON.parse(raw);
-  if (!Array.isArray(registry.repos)) {
-    throw new Error('registry/repos.json must contain a repos array');
+export const DISCOVERY_PATH = path.join(ROOT, '.local', 'repositories.json');
+
+export function loadRegistry(options = {}) {
+  const registryPath = options.registryPath ?? process.env.ROUNDTABLE_REGISTRY_PATH ?? REGISTRY_PATH;
+  const discoveryPath = options.discoveryPath ?? process.env.ROUNDTABLE_DISCOVERY_PATH ?? DISCOVERY_PATH;
+  const registry = validateRegistry(JSON.parse(readFileSync(registryPath, 'utf8')));
+  const explicitlyRequested = options.discoveryPath !== undefined || Boolean(process.env.ROUNDTABLE_DISCOVERY_PATH);
+  if (!existsSync(discoveryPath)) {
+    if (explicitlyRequested) throw new Error('Requested discovery snapshot is unavailable');
+    return registry;
   }
-  return registry;
+  return buildPortfolioRegistry(registry, JSON.parse(readFileSync(discoveryPath, 'utf8')), options.owner ?? 'infotradescout');
 }
 
 export function getRepoByKey(repoKey) {
@@ -51,79 +57,72 @@ export function parseArgs(argv = process.argv.slice(2)) {
 
 export function runGit(repoPath, args, options = {}) {
   const result = spawnSync('git', args, {
+    timeout: 15_000,
+    maxBuffer: 1024 * 1024,
+    ...options,
     cwd: repoPath,
     encoding: 'utf8',
     shell: false,
-    ...options
+    env: { ...process.env, ...options.env, GIT_OPTIONAL_LOCKS: '0' }
   });
   return {
-    code: result.status ?? 1,
+    code: result.error || result.signal ? 1 : result.status ?? 1,
     stdout: (result.stdout ?? '').trimEnd(),
     stderr: (result.stderr ?? '').trimEnd()
   };
 }
 
 export function repoExists(repo) {
-  return Boolean(repo.localPath && existsSync(repo.localPath));
+  return Boolean(repo.localPath && path.isAbsolute(repo.localPath) && existsSync(repo.localPath));
 }
 
 export function isGitRepo(repo) {
-  if (!repoExists(repo)) {
-    return false;
-  }
+  if (!repoExists(repo)) return false;
   const result = runGit(repo.localPath, ['rev-parse', '--is-inside-work-tree']);
   return result.code === 0 && result.stdout === 'true';
 }
 
 export function getRepoSnapshot(repo) {
-  const missing = !repoExists(repo);
-  if (missing) {
-    return {
-      exists: false,
-      isGitRepo: false,
-      branch: 'UNKNOWN',
-      head: 'UNKNOWN',
-      status: 'PATH_MISSING',
-      porcelain: '',
-      remote: repo.remote ?? ''
-    };
+  const snapshot = { exists: repoExists(repo), isGitRepo: false, branch: 'UNKNOWN', head: 'UNKNOWN',
+    status: 'PATH_MISSING', porcelain: '', remote: '' };
+  if (!snapshot.exists) return snapshot;
+  const inside = runGit(repo.localPath, ['rev-parse', '--is-inside-work-tree']);
+  if (inside.code !== 0 || inside.stdout !== 'true') return { ...snapshot, status: 'NOT_GIT_REPO' };
+  snapshot.isGitRepo = true;
+  const root = runGit(repo.localPath, ['rev-parse', '--show-toplevel']);
+  if (root.code !== 0 || !root.stdout) return { ...snapshot, status: 'GIT_CHECK_FAILED', failedCheck: 'root' };
+  try {
+    if (realpathSync(root.stdout) !== realpathSync(repo.localPath)) return { ...snapshot, status: 'ROOT_MISMATCH' };
+  } catch { return { ...snapshot, status: 'GIT_CHECK_FAILED', failedCheck: 'root' }; }
+  const checks = [
+    ['branch', ['branch', '--show-current']],
+    ['head', ['rev-parse', '--verify', 'HEAD']],
+    ['porcelain', ['status', '--porcelain']],
+    ['remote', ['remote', 'get-url', 'origin']]
+  ];
+  let rawRemote = '';
+  for (const [field, args] of checks) {
+    const result = runGit(repo.localPath, args);
+    if (result.code !== 0) return { ...snapshot, status: 'GIT_CHECK_FAILED', failedCheck: field };
+    if (field === 'remote') rawRemote = result.stdout;
+    else snapshot[field] = result.stdout;
   }
-
-  const gitRepo = isGitRepo(repo);
-  if (!gitRepo) {
-    return {
-      exists: true,
-      isGitRepo: false,
-      branch: 'UNKNOWN',
-      head: 'UNKNOWN',
-      status: 'NOT_GIT_REPO',
-      porcelain: '',
-      remote: repo.remote ?? ''
-    };
+  snapshot.branch ||= 'DETACHED';
+  if (!/^(?:[a-f0-9]{40}|[a-f0-9]{64})$/.test(snapshot.head)) return { ...snapshot, status: 'GIT_CHECK_FAILED', failedCheck: 'head' };
+  const expected = githubIdentity(repo.remote), actual = githubIdentity(rawRemote);
+  if (!expected || !actual || expected !== actual) {
+    return { ...snapshot, remote: actual ? `https://github.com/${actual}.git` : '', status: 'REMOTE_MISMATCH' };
   }
-
-  const branch = runGit(repo.localPath, ['branch', '--show-current']).stdout || 'DETACHED';
-  const head = runGit(repo.localPath, ['rev-parse', '--short', 'HEAD']).stdout || 'UNKNOWN';
-  const porcelain = runGit(repo.localPath, ['status', '--porcelain']).stdout;
-  const remote = runGit(repo.localPath, ['remote', 'get-url', 'origin']).stdout || repo.remote || '';
-  return {
-    exists: true,
-    isGitRepo: true,
-    branch,
-    head,
-    status: porcelain ? 'DIRTY' : 'CLEAN',
-    porcelain,
-    remote
-  };
+  snapshot.remote = `https://github.com/${actual}.git`;
+  snapshot.status = snapshot.porcelain ? 'DIRTY' : 'CLEAN';
+  return snapshot;
 }
 
 export function assertCleanRepo(repo) {
   const snapshot = getRepoSnapshot(repo);
-  if (!snapshot.exists || !snapshot.isGitRepo) {
-    throw new Error(`${repo.key} is not a usable git repo at ${repo.localPath}`);
-  }
-  if (snapshot.porcelain) {
-    throw new Error(`${repo.key} has uncommitted, deleted, or untracked files:\n${snapshot.porcelain}`);
+  if (snapshot.status !== 'CLEAN') {
+    throw new Error(`${repo.key} cannot be confirmed clean: ${snapshot.status}` +
+      (snapshot.porcelain ? `\n${snapshot.porcelain}` : ''));
   }
   return snapshot;
 }
@@ -157,10 +156,8 @@ export async function writeTextFile(filePath, content) {
 }
 
 export function formatStatus(snapshot) {
-  if (!snapshot.porcelain) {
-    return 'clean';
-  }
-  return snapshot.porcelain;
+  if (snapshot.status === 'CLEAN' && !snapshot.porcelain) return 'clean';
+  return snapshot.porcelain || String(snapshot.status || 'UNKNOWN').toLowerCase();
 }
 
 export function nowIso() {
