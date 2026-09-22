@@ -1,191 +1,73 @@
 # Queue Policy
 
-Gawain's Main must be fool-proof for multi-person, multi-agent work.
+RoundTable records cross-project work without replacing each product's repository, release checks, or human authority. Use the canonical installed Selective Intelligence skill for current execution and review. Queue order is an operating preference, not an approval gate.
 
-The queue exists for work not directly initiated by Thomas, work already changed by someone else, partner/team requests, unclear requests, large work that Thomas chooses to park, and changes that need later routing.
+## Project revisit and owner direction
 
-Thomas works the queue. The queue does not block Thomas from giving direct instructions.
+On a project revisit, read that project's latest checkpoint and relevant queue entries before starting another lane. The owner may reprioritize, continue, split, close, or bypass queued work with a direct instruction. Do not make the owner reauthorize implementation or verification already delegated across their projects.
 
-## Project Revisit Rule
+An owner-direct request proceeds to the owning project and its current SI workflow. Record the outcome, exact source, proof, and next unproven transition. Do not create an issue merely to satisfy a historical queue step.
 
-When a project is revisited, Gawain must check that project's queue before starting a new lane.
+## Requests from others
 
-Queued work for that project becomes the next work considered by default.
+Partner, teammate, or other-agent proposals enter a bounded queue record when ownership, scope, authority, or current state needs review. A queued request is evidence of a proposal, not permission to merge or change a product. Preserve its requester, project and brand, source revision if code already exists, requested outcome, affected surface, constraints, proof, and authorized next action.
 
-Thomas can change the order at any time with an explicit direction.
+If the change already exists in a product PR, link the exact PR and commit rather than copying its source into RoundTable. Inspect its current state before recommending adoption. The owner can explicitly direct an immediate bounded lane; the queue must not delay that instruction.
 
-```text
-Project revisited
-→ check project queue
-→ surface queued items
-→ Thomas chooses continue queue / override / close / split
-→ Gawain routes the chosen lane
-```
+## Review and execution route
 
-## Thomas Override Clause
+Owner direction or selected queue item
+→ current SI intent and authority check
+→ owning project checkpoint and exact source inspection
+→ bounded implementation in its own repository
+→ relevant local, integration, and user-flow proof
+→ independent review only when selected by canonical SI
+→ integration or release under current owner and product authority
+→ exact continuation record
 
-Direct IRL instructions from Thomas bypass all queue ordering.
+For auth, payments, safety, governance, schema, contact gates, deployment, and public claims, apply the stronger review or authority controls selected by the canonical SI skill and the owning product. A named Gemini or Gawain response is optional evidence, not an automatic prerequisite or merge instruction.
 
-Gawain must check the queue first, but an explicit human override dictates immediate execution.
+## Queue states
 
-The queue is the default fallback execution order, not a blocker for Thomas directives.
+Use these states for new issue titles or labels:
 
-## Thomas Direct-Action Rule
+- intake — proposal received
+- needs-route — owning project or scope unresolved
+- ready-for-work — intent, authority, and source path established
+- in-progress — implementation or verification underway
+- needs-review — relevant SI-selected review or evidence pending
+- needs-correction — sustained finding or failed check needs repair
+- ready-to-integrate — exact candidate and applicable authority are established
+- integrated — merged into intended source line
+- blocked — a real external or authority condition prevents progress
+- stale — source or status must be refreshed
+- closed — intentionally removed from active queue
 
-When Thomas gives a direct instruction, Gawain should route it immediately instead of creating a queue issue by default.
+Older Gemini-specific labels remain historical; translate them to the current state when an issue is next handled instead of treating the label as a live gate.
 
-```text
-Thomas direct instruction
-→ Gawain route decision
-→ Gemini objector if implementation is needed
-→ Codex lane prompt
-→ Codex checkpoint
-→ Gemini implementation review
-→ Gawain merge instruction
-```
+## Required queue record
 
-Thomas may choose to put something in the queue, but the queue is not mandatory for Thomas-originated work.
-
-## Non-Thomas Queue Rule
-
-```text
-If the request or change is not from Thomas, it goes into the queue first.
-```
-
-This includes:
-
-- partner requests
-- teammate requests
-- another ChatGPT session's proposal
-- another Codex session's change
-- already-made changes by anyone other than Thomas
-- unclear ownership requests
-- requests with no lane boundary
-
-## Changes That Must Become Issues
-
-Create a Gawain's Main issue before execution when any of these are true:
-
-- The request comes from anyone other than Thomas.
-- The change was already made by anyone other than Thomas.
-- A partner or teammate reports a desired change without a lane boundary.
-- The requester is unsure which repo owns the work.
-- Thomas explicitly says to put the work in the queue.
-- The work is too large and Thomas wants it split or parked.
-
-## Protected Work Still Requires Review
-
-Direct Thomas instructions do not require a queue issue, but protected implementation still follows the review loop:
-
-```text
-Gawain scope
-→ Gemini objector if implementation is needed
-→ Codex lane
-→ raw diff/full payload
-→ Gemini implementation review
-→ Gawain merge instruction
-```
-
-Protected areas include:
-
-- auth
-- sessions
-- payments
-- safety
-- governance
-- database schema
-- contact gates
-- deployment flow
-- public product positioning
-
-## Anyone-But-Thomas Rule
-
-For changes proposed or made by anyone other than Thomas:
-
-```text
-No direct merge.
-No silent adoption.
-No Codex execution without issue.
-No Gemini skip.
-```
-
-The work must be captured as an issue in Gawain's Main or, if already in a product repo PR, linked from a Gawain's Main issue.
-
-## Queue States
-
-Use these states in issue titles or labels:
-
-- `intake` — request received, not routed
-- `needs-route` — product/repo not decided
-- `needs-gemini-objector` — lane prompt needs pre-flight review
-- `ready-for-codex` — Gemini objector passed and prompt is ready
-- `codex-running` — implementation underway
-- `needs-raw-diff` — checkpoint returned, evidence needed
-- `needs-gemini-review` — implementation payload ready for Gemini
-- `needs-correction` — Gemini failed or objected
-- `ready-to-merge` — Gemini passed and Gawain authorized merge
-- `merged` — complete
-- `blocked` — cannot proceed
-- `stale` — needs re-evaluation before execution
-- `closed` — intentionally removed from active queue
-
-## Required Issue Fields
-
-Every queued work item must include:
-
-```text
 Requester:
 Requester role:
-Product/system:
-Suspected repo:
-Goal:
+Product/system and brand:
+Owning repository:
+Requested outcome:
 Why it matters:
 Affected surfaces:
-Risk level:
-Does this touch auth/session/payment/safety/governance/schema/contact/deploy?
-Known files, if any:
-Do-not-touch areas:
-Evidence/links/screenshots:
-Success criteria:
-Needed by:
-Gawain route decision:
-Gemini objector status:
-Codex branch:
-Implementation review status:
-Merge status:
-```
+Current source/PR/commit, if any:
+Status observation time and source:
+Working capability to preserve:
+Constraints and prohibited actions:
+Evidence and validation:
+SI mode/review state, when relevant:
+Current owner or quorum authority:
+Next exact action:
+Integration and live state:
 
-## Large Work Rule
+## Large or stale work
 
-If work is larger than one lane and Thomas chooses to queue it, split it into a parent issue and child lane issues.
+If the owner chooses to park a larger outcome, use a parent issue for the outcome and small child lanes for executable steps. Do not hand a vague parent issue to an implementation agent as a complete prompt.
 
-Parent issue stores the outcome and sequence.
+Re-evaluate stale or repeatedly bypassed items against current source and owner intent. Close, split, or reaffirm them explicitly; do not let stale queue entries appear to be current priority.
 
-Child issues store executable lanes.
-
-Do not give Codex a parent issue as an implementation prompt.
-
-## Stale Queue Rule
-
-Stale or repeatedly bypassed queue items must be re-evaluated, closed, split, or reaffirmed.
-
-Do not let stale work linger indefinitely as fake priority.
-
-## Already-Made Changes Rule
-
-If a partner, teammate, or another ChatGPT/Codex session already made changes:
-
-1. Create or update a Gawain's Main issue.
-2. Capture repo, branch, commit, and author/session if known.
-3. Require raw diff:
-   ```bash
-   git diff main...<branch>
-   ```
-4. Send Gemini implementation review packet.
-5. Gawain decides accept, correct, split, or reject.
-
-## Source of Truth
-
-Product repos remain source of truth for code.
-
-Gawain's Main is source of truth for routing, queue state, arbitration status, and cross-repo work memory.
+Product repositories remain source of truth for code and release state. RoundTable records routing and evidence; it does not confer approval or copy private product data.
