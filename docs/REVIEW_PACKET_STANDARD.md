@@ -1,32 +1,18 @@
 # Review Packet Standard
 
-Review packets live under `review-packets/<repo-key>/<lane>/`.
+Review packets under review-packets/<repo-key>/<lane>/ hold bounded evidence for the selected project's change. A packet is not a reviewer or a release decision.
 
-Each packet must include:
+Record:
 
-- Repo and lane identity
-- Branch and baseline SHA
-- Status timestamp
-- Source of truth checked
-- Last-known vs current
-- Freshness risk
-- Re-check required before
-- Existing-state/context findings
-- Working capability preserved
-- Conflicts, gaps, risks, and assumptions
-- geminiStatus
-- geminiPreflightRequired
-- geminiExecutionAuditRequired
-- geminiPreflightResultRef
-- geminiExecutionAuditResultRef
-- mergeAuthorization
-- File disposition
-- Worktree status
-- Validation log
-- Review notes
+- Owning repo, branch, exact candidate and baseline revisions
+- Observation time, source of truth, worktree state, and freshness trigger
+- Intended outcome and protected behavior
+- File disposition, relevant change or targeted excerpts, and actual validation log
+- Source, environment, account, provider, and data limitations
+- Canonical SI mode, whether independent review was selected, actual reviewer and independence boundary
+- Findings, dispositions, corrections, and affected revalidation
+- Current user or quorum authority, integration state, and next exact action
 
-Review packets do not include raw/full git diffs by default.
+Do not label a review passed merely because a packet exists, a named model answered, tests passed, or GitHub reports mergeable. A review of supplied excerpts is narrower than direct source inspection. Keep private inventory and credentials out of public packets; share only data authorized for the reviewer.
 
-A review packet missing existing-state/context findings, status freshness, or Gemini status fields is incomplete. It should not be treated as review-ready until that section is supplied, except for harmless low-risk work where the missing context can be corrected before apply, send, or merge.
-
-Reject or flag any merge-ready packet when `geminiStatus` is missing, pending, blocked, or `held_pending_gemini`. Reject or flag "ready," "approved," or "merge authorized" language unless `geminiStatus: execution_audit_passed`, or `geminiStatus: not_required` is explicitly justified for a standard non-core lane.
+Old Gemini/Gawain fields and exports remain dated historical records, not a current required gate. Use the canonical installed Selective Intelligence skill at ~/.agents/skills/selective-intelligence/SKILL.md and the owning product's release rules. Recheck exact source and authority immediately before merge or deployment.

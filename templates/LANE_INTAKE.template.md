@@ -1,33 +1,41 @@
 # Lane Intake
 
 Repo: {{REPO_NAME}} ({{REPO_KEY}})
-Local path: {{REPO_PATH}}
+Local path hint: {{REPO_PATH}}
 Lane: {{LANE_NAME}}
 Branch: {{BRANCH}}
 Baseline SHA: {{BASELINE_SHA}}
-Worktree status: {{WORKTREE_STATUS}}
+Observed worktree status: {{WORKTREE_STATUS}}
 
-## Time Passage + Status Freshness
+## Status freshness
 
 Status timestamp:
 Source of truth checked:
-Last-known vs current:
+Current or last-known:
 Freshness risk:
-Re-check required before:
+Recheck required before:
 
-## Gemini Status Gate
+## Existing state and intent
 
-geminiStatus:
-geminiPreflightRequired:
-geminiExecutionAuditRequired:
-geminiPreflightResultRef:
-geminiExecutionAuditResultRef:
-mergeAuthorization:
+Owning project and brand:
+Owner outcome:
+Existing artifacts inspected:
+Working capability to preserve:
+Conflicts and assumptions:
+Next unproven transition:
 
-## Goal
+## Selective Intelligence and authority
 
-## Allowed Files
+Canonical skill: ~/.agents/skills/selective-intelligence/SKILL.md (verify installed source)
+SI mode and trigger: not_evaluated
+Selected review and evidence: not_evaluated
+Current user or quorum authority: not_evaluated
+Integration state: not_evaluated
 
-## Banned Files
+## Allowed scope
 
-## Validation Plan
+## Protected or prohibited actions
+
+## Validation plan
+
+A registry path and this template do not prove local access, SI installation, approval, or product readiness.

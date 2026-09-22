@@ -1,37 +1,20 @@
 # Lane Intake Standard
 
-Every lane starts with a lane packet under `lane-packets/<repo-key>/<lane>/`.
+A lane packet under lane-packets/<repo-key>/<lane>/ can preserve the selected project's current state and task. It does not grant new authority or install Selective Intelligence.
 
-Every lane must begin with Mandatory Phase 0 — Existing-State + Context Check before implementation or review.
+Before implementation or review, record:
 
-Required intake fields:
+- Owning project, brand, repository, branch, full baseline SHA, and actual worktree status
+- Status timestamp, source of truth, current versus last-known classification, and recheck trigger
+- Owner outcome, existing state and artifacts inspected, working capability to preserve
+- Conflicts, assumptions, protected files, allowed scope, and prohibited actions
+- Proportionate validation plan and exact next action
+- Canonical SI skill source, selected Lean or Guided Council mode, and why
+- SI review state and evidence reference when review was selected
+- Current user or quorum authority and integration state
 
-- Repo key and local path
-- Current branch
-- Baseline SHA
-- Worktree status
-- Status timestamp
-- Source of truth checked
-- Last-known vs current
-- Freshness risk
-- Re-check required before
-- Goal
-- Existing-state/context findings
-- Existing files, docs, packets, decisions, screenshots, or artifacts inspected
-- Working capability to preserve
-- Conflicts, gaps, risks, and assumptions
-- Allowed files
-- Banned files
-- Validation plan
-- geminiStatus
-- geminiPreflightRequired
-- geminiExecutionAuditRequired
-- geminiPreflightResultRef
-- geminiExecutionAuditResultRef
-- mergeAuthorization
+Set undecided fields to not_evaluated; do not invent a pass, approval, or merge authorization. Missing existing-state or authority information must be resolved before an action it could change. Current user direction can authorize ordinary implementation and verification without a redundant queue or named-provider review.
 
-A lane packet missing the existing-state/context section or Gemini status fields is incomplete and should not be sent to Codex.
+Historical geminiStatus fields in older packets remain historical data. They are not required in new lane packets and do not block a current SI lane. Use the installed canonical skill at ~/.agents/skills/selective-intelligence/SKILL.md, not a repository copy.
 
-Use `geminiStatus: held_pending_gemini` when Gemini is unavailable. Use `geminiStatus: not_required` only for explicitly standard, non-core, non-governance, non-runtime, non-product, non-deployment lanes.
-
-Use `node scripts/create-lane-packet.mjs --repo-key <key> --lane <lane>`.
+Create a packet with node scripts/create-lane-packet.mjs --repo-key <key> --lane <lane>.

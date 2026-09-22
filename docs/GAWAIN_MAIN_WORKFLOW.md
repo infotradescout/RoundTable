@@ -1,75 +1,28 @@
-# Gawain-Main Workflow
+# RoundTable Workflow
 
-Gawain-Main / RoundTable is the dispatcher and ledger for Thomas/Gawain repos. It stores workflow doctrine, registry metadata, lane packets, review packets, parent routing packets, terminal Git state records, and Gemini exports.
+RoundTable is a dispatcher and evidence ledger for the owner's projects. Product source, runtime, customer data, and release truth remain in the owning repository or provider. The project name Gawain's Main does not require a named Gawain model or Gemini provider for every lane.
 
-It is not a product source mirror. Product repos stay separate and are referenced through `registry/repos.json`.
+Current work follows the canonical installed Selective Intelligence skill at ~/.agents/skills/selective-intelligence/SKILL.md. Resolve its current instructions at execution time; do not copy a behavioral edition into this repository. The owner has already delegated implementation and verification across their projects. Consequential product or release choices still follow the current user and product authority.
 
-## Foundation Lane Cap
+## Operating loop
 
-PR #2 is capped as the RoundTable foundation lane only.
+1. Identify the owning project and inspect its latest checkpoint, current source, origin, branch, worktree, and relevant queue.
+2. Confirm actual local access rather than trusting a historical registry path. Preserve uncommitted work.
+3. State the desired outcome, protected behavior, prohibited actions, and proof boundary.
+4. Apply canonical SI: Lean by default, Guided Council only when its current triggers select it.
+5. Work inside the owning repository or an isolated checkout. Keep other brands and private data separate.
+6. Run proportionate source, integration, and user-flow checks at the exact resulting revision.
+7. Obtain an independent reviewer only when canonical SI selects one; record actual scope, evidence, objections, and dispositions.
+8. Integrate or release within current owner, product, and human-quorum authority. Recheck exact state at the action boundary.
+9. Save implementation, proof, external effects, unknowns, retry safety, and the next exact action.
 
-RoundTable owns parent/child routing doctrine, repository boundary records, markdown/frontmatter packet expectations, mechanical safety doctrine, time-freshness laws, and terminal Git state record expectations.
+Lane and review packets are optional continuity aids. Existing Gemini exports are dated historical evidence, not a current hold or mandatory step. New packets use the SI fields in the current lane and review packet standards.
 
-RoundTable owns zero execution runtime. This workflow must not add SQLite schemas, Discord bot/API code, runtime execution, ephemeral workflow transition storage, Drive or Apps Script adapters, Merlin transport, product repo behavior, MealScout storage implementation, or Albion governance math.
+## Non-negotiables
 
-## Universal Operating Rule
-
-Every request starts with an existing-state + context check before action.
-
-This applies to code and non-code work, including documents, product strategy, screenshots, image intake, reviews, contracts, business workflows, operations, and governance packets.
-
-Required check:
-
-```text
-What already exists?
-What is already known?
-When was status last checked?
-Which source of truth was checked?
-Is this current or last-known status?
-What must be re-checked before approval, merge, apply, send, or close?
-What prior decisions constrain this?
-What working capability must be preserved?
-What conflicts with the request?
-What assumptions remain?
-What is the smallest aligned next action?
-```
-
-## Operating Loop
-
-1. Select a repo or workflow by `--repo-key` when repo work is involved.
-2. Confirm the local repo path from `registry/repos.json` when repo work is involved.
-3. Complete existing-state + context check.
-4. Create a lane packet in `lane-packets/` when a lane is needed.
-5. Send Gemini objector packet when implementation or governance risk exists.
-6. Run Codex in the target product repo only after the approved prompt exists.
-7. Create a review packet in `review-packets/`.
-8. Create a Gemini handoff in `exports/gemini/` when implementation review is required.
-9. Close only after Codex PASS, Gawain PASS, Gemini PASS when required, required human/Knight signoff when applicable, and a clean target worktree.
-
-## Gemini Status Gate
-
-No Gemini status means no merge, no closeout, no "approved," and no "ready."
-
-Required packet fields:
-
-```text
-geminiStatus:
-geminiPreflightRequired:
-geminiExecutionAuditRequired:
-geminiPreflightResultRef:
-geminiExecutionAuditResultRef:
-mergeAuthorization:
-```
-
-Merge authorization remains blocked until `geminiStatus: execution_audit_passed`, except for explicitly standard, non-core, non-governance, non-runtime, non-product, non-deployment lanes marked `geminiStatus: not_required`.
-
-## Non-Negotiables
-
-- Do not act from assumption alone when current state can be inspected.
-- Do not copy product source into Gawain-Main.
-- Do not place live product repos inside Gawain-Main.
-- Scripts must resolve product paths from `registry/repos.json`.
-- No lane may close with modified, deleted, or untracked files.
-- No raw/full diffs go to Gemini by default.
-- No agent may invent files, commits, validation logs, metrics, production status, review status, or completed work.
-- No stale status claim may support approve, merge, deploy, send, apply, close, or mark-complete decisions.
+- Do not copy product source, secrets, private inventory, or customer records into RoundTable.
+- Do not infer execution rights or installation from a registry entry or packet.
+- Do not count a clean checkout as product testing, deployment, or live acceptance.
+- Do not invent files, commits, validation logs, reviewer identity, approval, metrics, or production state.
+- Do not let stale status support merge, deploy, send, apply, close, or completion claims.
+- Preserve Albion's existing human Knight approval rules and each product's release gates.
