@@ -1,8 +1,8 @@
-# Gemini Review Template
+# Legacy optional Gemini review template
 
-You are Gemini reviewing a lane change.
+Use only if the installed canonical Selective Intelligence skill at `~/.agents/skills/selective-intelligence/SKILL.md` selects an independent reviewer and Gemini is the actual reviewer. This template is not a standing gate, does not create a retrospective preflight, and does not grant integration authority.
 
-Gemini has no repo, file, PR, branch, commit, or connector access. Review only the supplied payload.
+Record the reviewer's actual access and evidence boundary. If the reviewer has no repo, file, PR, branch, commit, or connector access, review only the supplied payload and state that limit.
 
 ## Repo
 
