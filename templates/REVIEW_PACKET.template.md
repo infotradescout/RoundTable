@@ -3,8 +3,11 @@
 Repo: {{REPO_NAME}} ({{REPO_KEY}})
 Lane: {{LANE_NAME}}
 Branch: {{BRANCH}}
-Candidate SHA:
-Baseline SHA: {{BASELINE_SHA}}
+Observed checkout HEAD (full SHA when available): {{OBSERVED_HEAD}}
+Candidate SHA (verified against intended PR): not_provided
+Baseline SHA (verified against intended base): not_provided
+
+This packet is a scaffold until both exact revisions and the evidence below are filled and rechecked.
 
 ## Status freshness
 

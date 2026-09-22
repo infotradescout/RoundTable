@@ -9,6 +9,7 @@ import {
   parseArgs,
   requireLane,
   renderTemplate,
+  runGit,
   writeTextFile
 } from './repo-registry.mjs';
 
@@ -16,6 +17,28 @@ const args = parseArgs();
 const repo = getRepoByKey(args['repo-key']);
 const lane = requireLane(args);
 const snapshot = getRepoSnapshot(repo);
+const observedHeadResult = snapshot.isGitRepo ? runGit(repo.localPath, ['rev-parse', 'HEAD']) : null;
+const observedHead = observedHeadResult?.code === 0 && /^[0-9a-f]{40}$/i.test(observedHeadResult.stdout)
+  ? observedHeadResult.stdout.toLowerCase()
+  : 'not_verified';
+const candidateSha = args['candidate-sha'] || 'not_provided';
+const baselineSha = args['baseline-sha'] || 'not_provided';
+for (const [name, value] of [['candidate-sha', candidateSha], ['baseline-sha', baselineSha]]) {
+  if (value !== 'not_provided' && (typeof value !== 'string' || !/^[0-9a-f]{40}$/i.test(value))) {
+    throw new Error(`--${name} must be a full 40-character commit SHA`);
+  }
+}
+if (candidateSha !== 'not_provided') {
+  if (observedHead === 'not_verified' || candidateSha.toLowerCase() !== observedHead) {
+    throw new Error('--candidate-sha requires a matching full observed checkout HEAD');
+  }
+}
+if (baselineSha !== 'not_provided') {
+  const baselineObject = runGit(repo.localPath, ['cat-file', '-e', `${baselineSha}^{commit}`]);
+  if (baselineObject.code !== 0) {
+    throw new Error('--baseline-sha is not a commit available in the observed checkout');
+  }
+}
 const reviewRoot = args['review-root'] || path.join(ROOT, 'review-packets', repo.key);
 const siRoot = args['si-root'] || args['gemini-root'] || path.join(ROOT, 'exports', 'si', repo.key);
 const reviewDir = path.join(reviewRoot, lane);
@@ -29,7 +52,9 @@ const values = {
   REPO_REMOTE: snapshot.remote || repo.remote || '',
   LANE_NAME: lane,
   BRANCH: snapshot.branch,
-  BASELINE_SHA: snapshot.head,
+  OBSERVED_HEAD: observedHead,
+  CANDIDATE_SHA: candidateSha.toLowerCase(),
+  BASELINE_SHA: baselineSha.toLowerCase(),
   WORKTREE_STATUS: formatStatus(snapshot)
 };
 
@@ -41,7 +66,11 @@ Local path hint: {{REPO_PATH}}
 Remote hint: {{REPO_REMOTE}}
 Lane: {{LANE_NAME}}
 Observed branch: {{BRANCH}}
-Observed baseline SHA: {{BASELINE_SHA}}
+Observed checkout HEAD (full SHA when available): {{OBSERVED_HEAD}}
+Candidate SHA (supplied): {{CANDIDATE_SHA}}
+Baseline SHA (supplied, local commit checked): {{BASELINE_SHA}}
+
+This is a scaffold until the exact candidate and baseline are supplied, checked against the intended PR and base, and the evidence below is completed. The observed checkout HEAD alone is not the baseline.
 
 ## Status freshness
 
@@ -96,7 +125,9 @@ Created: {{CREATED_AT}}
 Repo: {{REPO_NAME}} ({{REPO_KEY}})
 Lane: {{LANE_NAME}}
 Observed branch: {{BRANCH}}
-Observed baseline SHA: {{BASELINE_SHA}}
+Observed checkout HEAD (full SHA when available): {{OBSERVED_HEAD}}
+Candidate SHA (supplied): {{CANDIDATE_SHA}}
+Baseline SHA (supplied, local commit checked): {{BASELINE_SHA}}
 Observed worktree status: {{WORKTREE_STATUS}}
 
 This request is not sent and no reviewer is assigned. Use it only if the installed canonical SI skill selects independent review. Supply the outcome, exact candidate revision, allowed and protected scope, actual change, validation evidence, risk, and questions. Identify the reviewer's real provider, context, and evidence boundary. Do not copy the SI skill here or treat this file as authority.
@@ -112,6 +143,9 @@ const status = [
   'Freshness risk: re-check before action decisions',
   'Recheck required before: selected SI review, merge, apply, send, close, or completion claim',
   'Worktree status: ' + values.WORKTREE_STATUS,
+  'Observed checkout HEAD: ' + values.OBSERVED_HEAD,
+  'Candidate SHA: ' + values.CANDIDATE_SHA,
+  'Baseline SHA: ' + values.BASELINE_SHA,
   'Canonical SI source: ~/.agents/skills/selective-intelligence/SKILL.md',
   'SI mode and review: not_evaluated',
   'Current authority and integration: not_evaluated'
