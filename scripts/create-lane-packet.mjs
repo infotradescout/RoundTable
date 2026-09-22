@@ -45,10 +45,10 @@ Worktree status: {{WORKTREE_STATUS}}
 ## Time Passage + Status Freshness
 
 Status timestamp: {{CREATED_AT}}
-Source of truth checked: local git snapshot from registry path
-Last-known vs current: current as of status timestamp
+Source of truth checked: local Git snapshot attempt at registry path; verify actual root and origin before execution
+Last-known vs current: observed status only, not product or permission proof
 Freshness risk: re-check required if time passes, another agent acts, user reports new activity, or approval/merge/apply/send/close is requested
-Re-check required before: Codex execution, Gemini review, merge, apply, send, close, or completion claim
+Re-check required before: implementation, selected SI review, merge, apply, send, close, or completion claim
 
 ## Mandatory Phase 0 — Existing-State + Context Check
 
@@ -63,18 +63,15 @@ Smallest aligned next action: TBD
 
 Do not implement, rewrite, rename, delete, apply, send, or merge before this section is completed.
 
-## Gemini Status Gate
+## Selective Intelligence and authority
 
-geminiStatus: preflight_pending
-geminiPreflightRequired: yes
-geminiExecutionAuditRequired: yes
-geminiPreflightResultRef: TBD
-geminiExecutionAuditResultRef: TBD
-mergeAuthorization: blocked
+Canonical skill: ~/.agents/skills/selective-intelligence/SKILL.md (verify installed source)
+SI mode and trigger: not_evaluated
+Selected review and evidence: not_evaluated
+Current user or quorum authority: not_evaluated
+Integration state: not_evaluated
 
-No Gemini status means no merge, no closeout, no "approved," and no "ready."
-
-Use geminiStatus: not_required only for explicitly standard, non-core, non-governance, non-runtime, non-product, non-deployment lanes. Use geminiStatus: held_pending_gemini when Gemini is unavailable.
+This packet does not grant authority or require a named model review. Follow the installed canonical skill and actual user instruction.
 
 ## Goal
 TBD
@@ -94,21 +91,17 @@ Lane: {{LANE_NAME}}
 Branch: {{BRANCH}}
 Baseline SHA: {{BASELINE_SHA}}
 Status timestamp: {{CREATED_AT}}
-Source of truth checked: local git snapshot from registry path
-Last-known vs current: current as of status timestamp
+Source of truth checked: local Git snapshot attempt at registry path
+Last-known vs current: observed status only
 Freshness risk: re-check required before action decisions
-Re-check required before: Codex execution, Gemini review, merge, apply, send, close, or completion claim
+Re-check required before: implementation, selected SI review, merge, apply, send, close, or completion claim
 Worktree status:
 {{WORKTREE_STATUS}}
 
-Existing-state/context check: REQUIRED BEFORE ACTION
-Gemini status:
-geminiStatus: preflight_pending
-geminiPreflightRequired: yes
-geminiExecutionAuditRequired: yes
-geminiPreflightResultRef: TBD
-geminiExecutionAuditResultRef: TBD
-mergeAuthorization: blocked
+Existing-state/context check: REQUIRED BEFORE AUTHORITY-SENSITIVE ACTION
+Canonical SI source: ~/.agents/skills/selective-intelligence/SKILL.md
+SI mode and review: not_evaluated
+Current authority and integration: not_evaluated
 `, values);
 
 await writeTextFile(path.join(outputDir, 'LANE_INTAKE.md'), intake);

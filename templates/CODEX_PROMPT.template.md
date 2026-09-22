@@ -3,23 +3,23 @@
 Repo: {{REPO_NAME}} ({{REPO_KEY}})
 Local path: {{REPO_PATH}}
 Lane: {{LANE_NAME}}
-Baseline SHA: {{BASELINE_SHA}}
+Observed baseline SHA: {{BASELINE_SHA}}
 
-## Time Passage + Status Freshness
+## Time passage and status freshness
 
 Status timestamp:
 Source of truth checked:
-Last-known vs current:
+Current or last-known:
 Freshness risk:
 Re-check required before:
 
-## Gemini Status Gate
+## Selective Intelligence and authority
 
-geminiStatus:
-geminiPreflightRequired:
-geminiExecutionAuditRequired:
-geminiPreflightResultRef:
-geminiExecutionAuditResultRef:
-mergeAuthorization:
+Canonical installed skill: `~/.agents/skills/selective-intelligence/SKILL.md`
+SI mode and trigger: not_evaluated
+Independent review, if selected by SI: not_evaluated
+Findings and dispositions: not_evaluated
+Current user or quorum authority: not_evaluated
+Integration state: not_evaluated
 
-Work only inside the target repo. Do not copy product source into Gawain-Main. Do not close with a dirty worktree.
+Confirm the actual repository, branch, commit, worktree state, and protected scope before work. Preserve other brands, private data, and unrelated dirty work. Record real validation and the next unproven transition. This prompt does not grant merge authority.
