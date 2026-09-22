@@ -101,11 +101,11 @@ Do-not-touch areas:
 Doctrine constraints:
 Protected areas touched:
 Validation command:
-Gemini objector status:
+Canonical SI mode and selected review, if any:
 Codex checkpoint requirement:
 Review evidence requirement:
-Gemini implementation review requirement:
-Merge instruction owner:
+Actual reviewer and evidence boundary, if selected:
+Current owner or quorum authority:
 ```
 
 ## Worktree State Requirement
@@ -118,9 +118,7 @@ git branch --show-current
 git stash list
 ```
 
-Codex must not start a lane when unrelated work is dirty, untracked, or unstashed.
-
-If unrelated work exists, Codex stops and reports it.
+Preserve unrelated dirty, untracked, or stashed work. Use an isolated worktree or clone for the lane when the active checkout cannot be safely used.
 
 ## Existing-State Deep Dive Requirement
 
@@ -147,11 +145,11 @@ one lane = one branch
 
 Do not stack unrelated work.
 
-## Gemini Objector Requirement
+## Selective Intelligence review selection
 
-Before Codex execution, Gawain sends Gemini a pre-flight objector packet when implementation is needed or when governance/product risk exists.
+Apply the installed canonical Selective Intelligence skill at `~/.agents/skills/selective-intelligence/SKILL.md` before work. It selects Lean execution or a risk-triggered Guided Council and any independent review. Do not substitute a named model or RoundTable template for that skill. Record the actual reviewer, source access, evidence boundary, objections, and dispositions when review is selected.
 
-The packet must include:
+Any selected review packet should include:
 
 - repo
 - baseline SHA
@@ -165,11 +163,11 @@ The packet must include:
 - banned files
 - protected areas
 - validation plan
-- specific objector questions
+- specific review questions
 
 ## Review Evidence Requirement
 
-After Codex returns a checkpoint, Gawain must obtain review evidence before Gemini implementation review.
+After implementation, collect evidence appropriate to the selected SI review and the owning repository's release checks.
 
 Default evidence:
 
@@ -184,16 +182,16 @@ conflicts found
 assumptions made
 ```
 
-Raw/full diffs are omitted by default and require explicit Gawain authorization.
+Share source or diffs only within the authorized project and reviewer boundary. Do not claim a code review from a summary alone.
 
 ## Merge Requirement
 
-Codex performs repo-local merge work only after:
+Integration occurs only when:
 
-1. Gemini implementation review returns Pass.
-2. Gawain gives the merge instruction.
-3. The expected head SHA is confirmed.
-4. Any required human / Knight approval has been explicitly recorded.
+1. The exact PR head and intended base are refreshed, and conflicts and relevant checks are resolved.
+2. The canonical SI review selected for the actual risk is completed with material findings disposed.
+3. The owner, product, and any required human / Knight approval are current and recorded.
+4. The release and live-proof transitions remain separately identified.
 
 ## Minimum Return Checkpoint
 
