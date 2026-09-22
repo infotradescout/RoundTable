@@ -1,14 +1,14 @@
-# Gemini Handoff Standard
+# Legacy optional Gemini handoff
 
-Gemini handoff files live under `exports/gemini/<repo-key>/<lane>/`.
+Historical Gemini handoff files may live under `exports/gemini/<repo-key>/<lane>/`. New packets use `exports/si/<repo-key>/<lane>/` and select a reviewer only when the installed canonical Selective Intelligence skill calls for one. A Gemini request is neither a standing gate nor merge authority.
 
-Gemini receives a bounded request with:
+If Gemini is explicitly selected, send a bounded request with:
 
 - Repo and lane identity
 - Branch and baseline SHA
 - File disposition
 - Validation log
 - Worktree status
-- Specific PASS/FAIL questions
+- Specific questions and the actual evidence boundary
 
-Raw/full diffs are omitted by default. Add them only when Gawain explicitly authorizes a raw evidence packet.
+Include only evidence authorized for that reviewer and project. A response describes its own observed scope, not a retroactive preflight or human approval.
