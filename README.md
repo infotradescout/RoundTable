@@ -2,7 +2,7 @@
 
 Gawain's Main is the lightweight operating index, command layer, and RoundTable for Thomas's product repos.
 
-It is not a product repo. It is not a source-code mirror. It is the dispatcher and ledger for repo summaries, lane maps, active work, review rules, routing queues, minimum change parameters, parent routing packets, terminal Git state records, and Gawain/Codex/Gemini packet handoffs.
+It is not a product repo. It is not a source-code mirror. It is the dispatcher and ledger for repo summaries, lane maps, active work, review rules, routing queues, minimum change parameters, parent routing packets, terminal Git state records, and Selective Intelligence work and review handoffs.
 
 RoundTable owns zero execution runtime. It does not own Discord bot code, SQLite schemas, ephemeral workflow state, Drive or Apps Script adapters, Merlin transport, product repo behavior, or Albion governance math unless a future lane explicitly routes that doctrine work to the proper repo.
 
@@ -78,41 +78,7 @@ See `ROUND_TABLE.md`.
 
 ## Authority Model
 
-```text
-Gawain = doctrine, scope, routing, correction, merge order
-Gemini = arbitrator / adversarial objector / implementation reviewer
-Codex = implementation inside one repo/lane after Gemini objector pass
-Thomas = final human authority
-```
-
-## Non-Negotiable Arbitrator Rule
-
-Gemini must be included before and after Codex execution.
-
-No Gemini status means no merge, no closeout, no "approved," and no "ready."
-
-```text
-Gawain performs existing-state + context check
-→ Gawain drafts lane
-→ Gemini objector reviews scope
-→ Gawain reconciles objections
-→ Codex executes
-→ Codex returns checkpoint
-→ Gawain supplies bounded review evidence
-→ Gemini reviews implementation
-→ Gawain reconciles
-→ Codex merges only after Gawain instruction
-```
-
-Skipping the existing-state check or Gemini objector step is a workflow violation.
-
-For any lane involving doctrine, governance, workflow, authority, automation, core architecture, execution logic, cross-repo routing, merge authorization, deployment, money/legal commitments, storage/runtime, or product behavior changes:
-
-- Gemini pre-flight is required before Codex execution.
-- Gemini execution audit is required after Codex execution.
-- Gawain cannot authorize merge unless Gemini execution audit returned PASS or PASS WITH CONDITIONS with conditions explicitly resolved.
-- If Gemini is unavailable, the lane is `HELD_PENDING_GEMINI`.
-- GitHub mergeability, tests passing, Codex confidence, or Gawain review cannot substitute for Gemini PASS.
+Thomas and any existing product-specific human quorum retain final authority. The current cross-project execution workflow follows the canonical installed Selective Intelligence skill at `~/.agents/skills/selective-intelligence/SKILL.md`; RoundTable does not copy or replace that skill. Lean work is the default, and the canonical skill selects independent review or Guided Council when the actual risk warrants it. A Gemini or Gawain response is optional evidence, not a standing gate or merge instruction. See `REVIEW_RULES.md`.
 
 ## Minimum Change Rule
 
@@ -129,10 +95,9 @@ Thomas works the queue. The queue does not block Thomas from giving direct instr
 ```text
 Non-Thomas / unclear / partner-submitted
 → queue issue
-→ Gawain existing-state + context check
-→ Gawain route decision
-→ Gemini objector pass when implementation/governance risk exists
-→ Codex lane prompt when approved
+→ existing-state and current authority check
+→ correct project and bounded lane
+→ current Selective Intelligence workflow
 ```
 
 ## Source of Truth Rule
@@ -150,11 +115,9 @@ AutoBott code stays in AutoBott
 
 This repo stores summaries and operating context only.
 
-## Gemini Review Rule
+## Review Evidence Rule
 
-Gemini has no repo, file, PR, or connector access.
-
-Gemini review packets include worktree status, file disposition, validation logs, existing-state/context findings, and targeted evidence. Raw/full diffs are not included by default. Gawain may explicitly authorize a raw evidence packet when needed.
+Review packets record actual source identity, worktree state, file disposition, validation output, existing-state findings, objections, and evidence limits. A reviewer has only the source and tools actually supplied or inspected. Do not treat a model name or a packet as proof of independent review or authority. Keep private project data out of public packets.
 
 ## Command Layer
 

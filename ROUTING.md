@@ -1,83 +1,34 @@
-# Gawain Routing Gateway
+# RoundTable Routing Gateway
 
-Gawain's Main is the routing gateway for work across attached Thomas-owned repos.
+RoundTable is a shared routing and evidence index. It is not a source-code mirror or replacement for product repositories. A partner or operator can describe work once, identify the owning project, preserve constraints, and carry a bounded lane to its actual source.
 
-It is not a source-code mirror and it is not a replacement for product repos. It is the place where partners and operators can describe work once, route it to the correct repo, define the lane, preserve doctrine, and produce Codex/Gemini/Gawain packets.
+## Routing rule
 
-## Routing Rule
+Request enters RoundTable
+→ inspect current owner intent, project checkpoint, source, and authority
+→ resolve one owning project and exact lane
+→ apply the canonical installed Selective Intelligence skill
+→ implement only in the owning repository within the approved scope
+→ run relevant source, integration, and real-workflow proof
+→ obtain independent review when canonical SI selects it
+→ integrate or release under current owner and product authority
+→ record exact source, effects, unknowns, and next action
 
-```text
-Request enters Gawain's Main
-→ Gawain identifies the correct product repo
-→ Gawain defines the lane and file boundaries
-→ Gemini arbitrator reviews the lane before Codex runs
-→ Codex executes inside the actual product repo only
-→ Codex returns checkpoint
-→ Gawain supplies raw diff/full payload to Gemini
-→ Gemini reviews implementation
-→ Gawain reconciles
-→ Codex performs repo-local merge only after Gawain instruction
-```
+Do not make a historical Gemini/Gawain packet a mandatory precondition. These may be optional evidence when their actual run, provider, source boundary, and result are recorded. A model or role label never substitutes for a human approval.
 
-## What Gawain's Main Can Do
+## What RoundTable stores
 
-Gawain's Main can hold:
+- project and repository identity
+- scoped requests and lane boundaries
+- current status with observation time and source
+- evidence and review references
+- checkpoints and next unproven transitions
+- integration or correction decisions made by the proper authority
 
-- repo summaries
-- doctrine summaries
-- lane maps
-- active-work status
-- partner work requests
-- Codex prompts
-- Gemini objector packets
-- Gemini implementation review packets
-- merge/correction decisions
-- links to PRs, commits, and raw-diff payload locations
+It does not store product source, secrets, private connector inventories, customer records, or execution runtime. It does not merge product changes from this repository, weaken repo-specific release checks, or alter Albion approval rules.
 
-## What Gawain's Main Must Not Do
+## Partner requests
 
-Gawain's Main must not:
+A partner request includes requester, project and brand, desired outcome, business reason, urgency, affected surfaces, suspected repository, protected areas, validation expectation, and whether production behavior could change. Use the queue policy for unclear or non-owner proposals. The owner's direct direction may reprioritize the queue without a redundant permission request.
 
-- contain product source code
-- replace product repos as source of truth
-- centralize secrets or `.env` values
-- merge product changes directly
-- weaken repo-specific doctrine
-- bypass Gemini arbitration
-- let partners modify attached product repos without route approval
-
-## Partner Routing Model
-
-Partners may use Gawain's Main to submit work requests, but every request must be routed through the same doctrine:
-
-```text
-Partner request
-→ Gawain route decision
-→ Gemini pre-flight objector pass
-→ Codex implementation in correct repo
-→ Gemini implementation review
-→ Gawain merge instruction
-```
-
-Partner requests do not bypass Gawain, Gemini, Codex, or repo boundaries.
-
-## Required Routing Fields
-
-Every routed request should identify:
-
-- requester
-- target product/system, if known
-- desired outcome
-- business reason
-- urgency
-- affected surfaces
-- suspected repo, if known
-- blocked files or areas
-- validation expectation
-- whether production behavior could change
-
-## Source-of-Truth Rule
-
-The target product repo remains source of truth for code, tests, runtime behavior, and product-specific doctrine.
-
-Gawain's Main stores route context and review memory only.
+The target product repository remains source of truth for its code, tests, production configuration, and release. RoundTable remains a routing and continuity record.

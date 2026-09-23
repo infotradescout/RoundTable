@@ -138,25 +138,21 @@ Re-check required before:
 
 A stale status claim must not support approve, merge, deploy, send, apply, close, or mark-complete decisions.
 
-## Human / GPT / Gemini / Codex Routing
+## Current routing and review
 
-Default RoundTable routed workflow:
+RoundTable records the existing-state check and routes work to its owning project. The current cross-project execution and review workflow is the installed canonical Selective Intelligence skill at `~/.agents/skills/selective-intelligence/SKILL.md`. Do not copy its behavioral rules into RoundTable. Apply its current mode and review selection to the actual risk, then record the exact source, evidence, independence boundary if a reviewer is selected, and next unproven transition.
 
 ```text
 Human request
-→ RoundTable / Gawain existing-state + context check
-→ Gemini objector review when implementation/governance risk exists
-→ Gawain reconciles objections
-→ Codex executes bounded lane in the target repo only after approval
-→ Codex returns evidence packet
-→ Gawain reviews evidence
-→ Gemini implementation review when required
-→ Gawain reconciles
-→ human / Knight approval where governance requires it
-→ merge/apply/send only after explicit authority
+→ existing-state and authority check
+→ canonical SI mode and any selected independent review
+→ bounded work in the owning project
+→ exact-source validation and finding disposition
+→ current user, product, or human Knight authority where required
+→ integration and release transitions, each with its own proof
 ```
 
-Gemini review packets must include enough evidence to review. A summary-only packet is not reviewable.
+Any selected review packet must include enough authorized evidence to review. A summary-only packet cannot substantiate a code verdict. Gemini and Gawain records may be useful historical evidence but are not current mandatory gates or merge instructions.
 
 Codex must not self-authorize scope expansion, merge authority, production changes, human consent, or governance approval.
 

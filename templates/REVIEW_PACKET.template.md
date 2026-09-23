@@ -3,42 +3,44 @@
 Repo: {{REPO_NAME}} ({{REPO_KEY}})
 Lane: {{LANE_NAME}}
 Branch: {{BRANCH}}
-Baseline SHA: {{BASELINE_SHA}}
+Observed checkout HEAD (full SHA when available): {{OBSERVED_HEAD}}
+Candidate SHA (verified against intended PR): not_provided
+Baseline SHA (verified against intended base): not_provided
 
-## Time Passage + Status Freshness
+This packet is a scaffold until both exact revisions and the evidence below are filled and rechecked.
 
-- Status timestamp:
-- Source of truth checked:
-- Last-known vs current:
-- Freshness risk:
-- Re-check required before:
+## Status freshness
 
-## Existing-State + Context Check
+Status timestamp:
+Source of truth checked:
+Current or last-known:
+Freshness risk:
+Recheck required before:
 
-- Project / brand / workflow:
-- Existing artifacts reviewed:
-- Current behavior found:
-- Working capability preserved:
-- Prior constraints / decisions:
-- Conflicts found:
-- Gaps / risks / assumptions:
-- Smallest aligned action chosen:
+## Existing state and intent
 
-## Gemini Status Gate
+Project, brand, and user outcome:
+Existing artifacts inspected:
+Working capability preserved:
+Conflicts and assumptions:
 
-- geminiStatus:
-- geminiPreflightRequired:
-- geminiExecutionAuditRequired:
-- geminiPreflightResultRef:
-- geminiExecutionAuditResultRef:
-- mergeAuthorization:
+## Selective Intelligence and authority
 
-## Worktree Status
+Canonical skill: ~/.agents/skills/selective-intelligence/SKILL.md (verify installed source)
+SI mode and trigger: not_evaluated
+Reviewer and independence boundary: not_evaluated
+Findings and dispositions: not_evaluated
+Current user or quorum authority: not_evaluated
+Integration state: not_evaluated
+
+## Worktree status
+
 {{WORKTREE_STATUS}}
 
-## File Disposition
+## File disposition
 
-## Validation Log
+## Validation log
 
-## Notes
-No raw/full diff included by default.
+## Evidence limits and next action
+
+Do not infer a pass from this packet. Share only data authorized for the selected reviewer.

@@ -1,6 +1,6 @@
 # Work Request Template
 
-Use this template when Thomas or a partner wants Gawain to route work to an attached repo.
+Use this template when Thomas or a partner wants RoundTable to route work to an attached repo. Current execution follows the installed canonical Selective Intelligence skill; this request itself grants no product or merge authority.
 
 ```text
 Requester:
@@ -40,9 +40,9 @@ Suggested lane, if known:
 Notes for Gawain:
 ```
 
-## Gawain Intake Result
+## RoundTable intake result
 
-Gawain should convert the request into:
+Record the owning project, current authority, and bounded lane:
 
 ```text
 Route decision:
@@ -52,6 +52,7 @@ Allowed files:
 Banned files:
 Doctrine constraints:
 Validation expectation:
-Gemini objector packet:
-Codex prompt after Gemini pass:
+Canonical SI mode and review selection:
+Selected review evidence, if any:
+Implementation prompt and next unproven transition:
 ```

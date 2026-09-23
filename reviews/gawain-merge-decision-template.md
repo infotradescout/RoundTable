@@ -1,5 +1,7 @@
 # Gawain Merge Decision Template
 
+Legacy optional record for a specifically selected Gawain reviewer. The current cross-project workflow is the installed canonical Selective Intelligence skill at `~/.agents/skills/selective-intelligence/SKILL.md`. A Gawain verdict is not a required pass or merge instruction. Recheck actual source, selected review, and human authority before integration.
+
 ## Decision
 
 ```text

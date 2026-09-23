@@ -1,242 +1,37 @@
 # Review Rules
 
-## RoundTable Foundation Boundary
+## Scope and canonical workflow
 
-RoundTable is the dispatcher and ledger. It owns parent routing packets, terminal Git state records, markdown/frontmatter packet schema expectations, mechanical safety doctrine, repository boundary records, and time-freshness laws.
+RoundTable is a dispatcher and evidence ledger. It does not own product source, execution runtime, customer data, or Albion governance math. Route each project to its own repository and keep brands separate.
 
-RoundTable owns zero execution runtime.
+The owner's current cross-project work uses the canonical installed Selective Intelligence skill at ~/.agents/skills/selective-intelligence/SKILL.md. Load that skill and its current references from the installed location. Do not vendor, restate, or replace its behavioral rules inside RoundTable. If the installation is unavailable, record that limitation and use only the safe work that remains possible. Use Infinity only through its existing canonical repository and declared pins; a RoundTable packet does not prove installation.
 
-PR #2 must not add SQLite schemas, Discord bot/API code, runtime execution, ephemeral workflow transition storage, Drive or Apps Script adapters, Merlin runtime or transport implementation, product repo behavior, or Albion governance math unless explicitly routed to the proper repo.
+Current user direction and required human authority outrank historical RoundTable workflow text. Named model or persona reviews may provide evidence when appropriate, but Gemini and Gawain are not mandatory review or merge gates. Historical Gemini packets remain evidence of their own dated runs; they do not authorize or block a current lane by name alone.
 
-## Universal Existing-State Review Gate
+## Existing state and freshness
 
-Every request routed through RoundTable/Gawain into Codex, Gemini, Merlin, AI Council, or a product repo must begin with an existing-state + context check.
+Before routing or changing a lane, inspect the relevant project checkpoint, exact repository root, branch, full commit, origin, dirty state, working behavior, constraints, and next unproven transition. Preserve concurrent work and use an isolated checkout when needed.
 
-This applies to RoundTable packeting, routing, review, and terminal state recording for code and non-code work. The target repo still owns implementation behavior.
+Every material status claim records its observation time, source of truth, exact revision or runtime, what was checked, what remains unknown, and the trigger for rechecking. A stale or failed check cannot support a merge, deployment, send, apply, closeout, or completion claim.
 
-```text
-No existing-state/context check = no trusted execution.
-```
+An incomplete context check should be corrected before an authority-sensitive action. Low-risk reversible work may continue when the missing detail cannot change its outcome.
 
-A packet missing the existing-state/context section defaults to:
+## Selective Intelligence review
 
-```text
-FAIL — missing existing-state/context check
-```
+Lean execution is the default. Select Guided Council only when the canonical skill's current triggers apply, then use the minimum roles and evidence it requires. A provider name, role label, model recommendation, passing test, or GitHub mergeability does not create independent review or human permission.
 
-or, for harmless low-risk work only:
+A bounded review includes the intended outcome, owning project and source revision, allowed and protected scope, actual change or artifact, relevant test output, source and environment limits, objections, dispositions, and next exact action. Give a reviewer enough source or targeted evidence to inspect the claim. Distinguish a review of supplied excerpts from direct source inspection.
 
-```text
-PASS WITH CONDITIONS — existing-state/context check required before apply/send/merge
-```
+For a sustained material objection, correct the source and rerun affected proof at the resulting revision. Unresolved authority or product choices go to the authorized human or existing quorum. Never record a model as a human or Knight approver.
 
-## Time Passage And Status Freshness Review Gate
+## Integration and completion
 
-All status claims are time-bound.
+Merge or release only within the owner's current authorization and the owning repository's applicable product, safety, and release checks. Recheck the exact PR head, base, conflicts, dirty state, and required validation at the point of integration. Preserve the distinction between implemented, proved, pushed, integrated, deployed, and live verified.
 
-Before a packet or review claims work is done, ready, merged, deployed, validated, accessible, fixed, current, blocked, complete, or still true, it must include:
+A RoundTable registry preflight checks metadata and local Git state only. It does not prove product tests, a browser journey, SI or Infinity installation, deployment, or customer acceptance. Keep private inventory and credentials outside tracked packets. Do not place real trades, payments, purchases, or customer messages for verification.
 
-```text
-Status timestamp:
-Source of truth checked:
-Last-known vs current:
-Freshness risk:
-Re-check required before:
-```
+RoundTable may route and record Albion work, but it cannot change Albion's human Knight approval rules. The existing 3/3 path and any required human consent remain governed by Albion's current doctrine.
 
-If status was not re-checked, the claim must be labeled as last-known status and must not support approve, merge, deploy, send, apply, close, or mark-complete decisions.
+## Legacy packet handling
 
-A review packet with stale or missing status freshness defaults to FAIL for authority-sensitive work, or PASS WITH CONDITIONS only when the missing freshness can be corrected before action.
-
-## Non-Negotiable Arbitrator Rule
-
-Gemini is the arbitrator and adversarial objector for workflow safety.
-
-No Gemini status means no merge, no closeout, no "approved," and no "ready."
-
-Gawain must never send Codex an implementation prompt for a repo lane until:
-
-1. Gawain has completed the existing-state + context check.
-2. Gemini has reviewed the proposed lane plan and returned Pass or objections when implementation/governance risk exists.
-
-This rule applies to RoundTable-routed workflows and all repos that receive a RoundTable lane packet.
-
-```text
-No existing-state check = no Codex execution.
-No Gemini objector pass = no Codex execution.
-No review evidence = no Gemini implementation review.
-No Gemini implementation pass = no merge instruction.
-```
-
-## Gemini Status Gate
-
-Every lane or PR packet must include:
-
-```text
-geminiStatus:
-geminiPreflightRequired:
-geminiExecutionAuditRequired:
-geminiPreflightResultRef:
-geminiExecutionAuditResultRef:
-mergeAuthorization:
-```
-
-Allowed `geminiStatus` values:
-
-```text
-not_required
-preflight_pending
-preflight_passed
-execution_audit_pending
-execution_audit_passed
-blocked
-held_pending_gemini
-```
-
-Allowed `mergeAuthorization` values:
-
-```text
-blocked
-authorized
-held_pending_gemini
-```
-
-For any lane involving doctrine, governance, workflow, authority, automation, core architecture, execution logic, cross-repo routing, merge authorization, deployment, money/legal commitments, storage/runtime, or product behavior changes:
-
-1. Gemini pre-flight is required before Codex execution.
-2. Gemini execution audit is required after Codex execution.
-3. Gawain cannot authorize merge unless Gemini execution audit returned PASS or PASS WITH CONDITIONS with conditions explicitly resolved.
-4. If Gemini is unavailable, the lane must be marked `held_pending_gemini`.
-5. GitHub mergeability, tests passing, Codex confidence, or Gawain review cannot substitute for Gemini PASS.
-
-Validation rule:
-
-- Missing `geminiStatus` on a merge-ready packet defaults to FAIL.
-- `preflight_pending`, `execution_audit_pending`, `blocked`, or `held_pending_gemini` on a merge-ready packet defaults to FAIL.
-- "ready," "approved," or "merge authorized" language without `geminiStatus: execution_audit_passed` defaults to FAIL.
-- If the Gemini channel/tool is unavailable, `geminiStatus` must be `held_pending_gemini`.
-- `geminiStatus: not_required` is allowed only for explicitly standard, non-core, non-governance, non-runtime, non-product, non-deployment lanes.
-
-## Full Workflow Loop
-
-```text
-1. Human request enters RoundTable/Gawain routing.
-2. RoundTable/Gawain performs existing-state + context check.
-3. Gawain drafts lane scope and Codex prompt.
-4. Gawain sends Gemini a pre-flight objector packet when implementation/governance risk exists.
-5. Gemini returns Pass or Object.
-6. Gawain reconciles objections and revises the Codex prompt.
-7. Codex executes only the approved lane in the correct repo.
-8. Codex returns checkpoint.
-9. Gawain obtains bounded review evidence.
-10. Gawain sends Gemini implementation review packet with evidence when required.
-11. Gemini returns Pass or Fail.
-12. Gawain reconciles.
-13. Required human / Knight approval is recorded when governance requires it.
-14. Codex performs the repo-local merge only after Gawain gives the merge instruction.
-```
-
-Skipping the existing-state check or Gemini at either required stage is a workflow violation.
-
-## Pre-Flight Objector Packet Requirements
-
-Every pre-Codex Gemini packet must include:
-
-1. Repo
-2. Current main or baseline SHA
-3. Completed relevant lanes
-4. Existing-state/context findings
-5. Working capability to preserve
-6. Proposed lane name
-7. Proposed branch name
-8. Proposed commit message
-9. Goal
-10. Doctrine constraints
-11. Allowed files
-12. Banned files
-13. Required implementation steps
-14. Validation plan
-15. Explicit objector questions
-16. Required Gemini output format
-
-## Gemini Evidence Rule
-
-Gemini cannot see GitHub, the repo, PRs, files, commits, or branches unless Gawain supplies the content.
-
-Every implementation review packet must include:
-
-1. Repo
-2. PR / branch / commit
-3. Baseline SHA
-4. Lane name
-5. Status timestamp and source of truth checked
-6. Last-known vs current classification
-7. Freshness risk and re-check requirement
-8. Existing-state/context findings
-9. Working capability preserved
-10. Conflicts found
-11. Assumptions made
-12. Files changed
-13. Validation reported
-14. File disposition, worktree status, validation log, and targeted evidence
-15. Doctrine checklist
-16. Specific review questions
-17. Required Pass/Fail output
-
-## No Summary-Only Reviews
-
-Do not send Gemini only:
-
-```text
-PR link
-commit SHA
-summary
-files changed list
-test summary
-```
-
-That is not reviewable.
-
-Gemini must receive enough existing-state, file disposition, validation, and targeted evidence to judge the lane.
-
-## Default Evidence Packet
-
-By default, Gemini receives:
-
-- existing-state/context findings
-- file disposition
-- worktree status
-- validation log
-- lane scope
-- working capability preserved
-- conflicts found
-- assumptions made
-- targeted notes or excerpts needed to judge the lane
-
-Raw/full diffs are omitted by default. Gawain may explicitly authorize a raw evidence packet for a specific review.
-
-## Human / AI Authority Rule
-
-AI agents may advise, object, route, draft, review, and preserve records.
-
-AI agents must not fabricate or silently substitute:
-
-- human approval
-- Knight approval
-- merge approval
-- production approval
-- legal approval
-- Gemini review
-- Codex completion
-- validation output
-- implementation evidence
-
-Where Albion governance requires Knight approval, the 3/3 path remains Gawain + Lancelot + Percival, and human consent remains required when specified by doctrine.
-
-RoundTable records and routes authority state. It does not alter Albion governance math in PR #2.
-
-## Merge Rule
-
-Gawain gives the merge instruction only after Gemini implementation review returns Pass and any required human / Knight approval is recorded.
-
-Codex performs repo-local merge actions. Codex does not grant itself merge authority.
+Existing Gemini/Gawain fields in historical lane packets and exports describe historical workflow state only. New packets use the canonical SI review and authority fields documented in the current lane and review packet standards. Do not rewrite old verdicts, infer that a missing historical named-provider status blocks new work, or treat a new SI review as a retroactive old review.

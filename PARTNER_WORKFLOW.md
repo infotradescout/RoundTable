@@ -1,85 +1,46 @@
 # Partner Workflow
 
-Gawain's Main may be used by Thomas and approved business partners to route work across attached repos.
+RoundTable may receive requests from the owner and approved business partners. It records and routes work; the owning product repository holds implementation, release checks, and product truth.
 
-## Core Rule
+## Partner scope
 
-Partners can request work. Partners do not directly redefine doctrine, bypass review, or merge implementation lanes.
+Partners may request features, copy, repairs, launch-blocker work, workflow changes, strategy review, quality observations, or status checks. A request does not grant product access, merge authority, publication rights, or an exception to a product's contact or payment controls.
 
-```text
-Partner asks
-→ Gawain routes
-→ Gemini objects/pre-flights
-→ Codex executes in the correct repo
-→ Gemini reviews actual payload
-→ Gawain issues correction or merge instruction
-```
+Partner request
+→ RoundTable records project, brand, intent, evidence, and authority
+→ canonical installed Selective Intelligence selects Lean work or a risk-triggered Guided Council
+→ work and verification occur in the owning repository
+→ current owner or existing quorum decides consequential product or release actions
 
-## Partner Request Types
+No named model or persona is a standing review prerequisite. A Gemini or Gawain result may be retained as dated evidence, but current SI and owner authority control the lane.
 
-Partners may submit:
+## Required request record
 
-- feature requests
-- copy requests
-- bug reports
-- launch blockers
-- workflow improvements
-- product strategy notes
-- QA observations
-- customer/user feedback
-- repo-status questions
-
-## Required Partner Request Format
-
-```text
 Requester:
-Product/System:
-Goal:
-Why it matters:
-Affected user/surface:
+Product/system and brand:
+Desired outcome:
+Reason and urgency:
+Affected user or surface:
 Known constraints:
-Deadline/urgency:
-Evidence/screenshots/links:
-Suggested repo, if known:
-Do-not-touch areas:
+Evidence or links:
+Suggested repository, if known:
+Protected areas:
 Success criteria:
-```
+Current authority for action:
 
-## Gawain Responsibilities
+## Routing responsibilities
 
-For every partner request, Gawain must:
+The operator handling the request must identify the owning project and repository, inspect its latest checkpoint and current source, classify what is already working, preserve protected behavior, and define a bounded task. The operator then follows the canonical SI skill from its installed location, gives the implementation agent an exact scope and evidence target, reviews the resulting proof proportionally, and records the next unproven transition.
 
-1. Identify the correct repo.
-2. Confirm whether the request is product work, docs work, governance work, or support work.
-3. Check repo doctrine.
-4. Define a narrow lane.
-5. Define allowed and banned files.
-6. Build a Gemini pre-flight objector packet.
-7. Reconcile Gemini objections.
-8. Produce a Codex implementation prompt only after objector pass.
-9. Require raw diff/full payload before Gemini implementation review.
-10. Authorize merge only after Gemini implementation pass.
+A partner may propose or review, but may not silently redefine doctrine, copy another brand's data, expose secrets, bypass approval or contact gates, request real customer transactions as tests, or merge an implementation lane without current owner and product authority.
 
-## Partner Boundaries
+## Repository boundaries
 
-Partners must not:
+TradeScout work stays in TradeScout.
+MealScout work stays in MealScout.
+Sway work stays in Sway.
+Albion work stays in Albion.
+Merlin work stays in Merlin.
+AutoBott work stays in AutoBott.
 
-- request cross-brand copy bleed
-- request secrets or `.env` exposure
-- request direct production mutation without an approved lane
-- bypass contact gates, approval gates, or safety controls
-- redefine Albion governance
-- ask Codex to merge without Gawain authorization
-
-## Repo Boundaries
-
-```text
-TradeScout work goes to TradeScout.
-MealScout work goes to MealScout.
-Sway work goes to Sway.
-Albion work goes to Albion.
-Merlin work goes to Merlin.
-AutoBott work goes to AutoBott.
-```
-
-Gawain's Main stores the routing record only.
+RoundTable keeps routing and evidence references only. It does not mirror product source, private inventories, credentials, customer records, or installed SI/Infinity runtimes.
