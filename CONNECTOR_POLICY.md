@@ -1,47 +1,25 @@
 # Connector Policy
 
-## Default
+## Scope and authority
 
-Connect ChatGPT/Gawain to this lightweight repo by default, not every product repo.
+RoundTable is the lightweight shared index. The owner’s all-project implementation instruction applies to each project available through their authorized connections; it does not require reconnecting or granting the same permission separately for each repository.
 
-## Reason
+Read only the selected project’s checkpoint, current branch and next relevant files. Do not load every codebase into every task. Product source remains in its own repository, and project brands and operating rules remain separate.
 
-Connecting all product repos can cause:
+## Verify the execution path
 
-- connector lag
-- incorrect repo routing
-- stale branch detection
-- invalid PR head errors
-- context bleed across repos
+Use an actual Desktop Commander ping/configuration response before claiming PC or terminal access. Discover a usable Chrome-debug session through that authorized terminal before claiming browser control. A listed device, valid account token, user-reported reconnect, repository permission or stored local path is not execution evidence.
 
-## Source of Truth
+A failed remote connection means the connection is unavailable, not that the computer itself is switched off. Share the observation across the current task instead of repeating it per project. Continue work through other working authorized connections where possible; do not route around a rejected operation.
 
-Local git is source of truth for:
+## Evidence sources
 
-- branch existence
-- commit SHA
-- remotes
-- worktree status
-- raw diff payload
+Local Git is authoritative for the inspected worktree’s branch, full commit, origin and dirty state. The GitHub connector is authoritative for the remote repository and PR state it actually returns. Neither proves the other. Revalidate at the point of action.
 
-GitHub connector is optional convenience only.
+Failed Git commands, unknown roots, wrong origins, missing checkouts and dirty worktrees must not be reported clean. Preserve local work and select an isolated worktree when needed. Do not reset, clean, force-push or disable a gate as a connection workaround.
 
-## When Connector Breaks
+## Privacy and scope inventory
 
-Use:
+Keep owner-scoped connector snapshots in ignored `.local/repositories.json`, or an explicitly supplied external path through `ROUNDTABLE_DISCOVERY_PATH`. The file contains a `repositories` array with stable ID, full name, default branch, visibility and archived state. Credentials and unrelated connector metadata are not needed.
 
-```bash
-git status
-git branch --show-current
-git remote -v
-git rev-parse HEAD
-git log -1 --oneline
-git ls-remote --heads origin <branch>
-git diff main...<branch>
-```
-
-Then paste the raw diff into Gawain for Gemini packet creation.
-
-## Product Repo Access
-
-Only connect a product repo when there is a specific need to inspect it. Disconnect or ignore it after the review if connector lag returns.
+The loader merges this snapshot with existing local mappings in memory. Private projects remain included locally, but their names, paths, repository metadata and execution packets must not be committed to this public index. Inventory and output logs are local data; they do not grant approval, assert installation or trigger product actions.
